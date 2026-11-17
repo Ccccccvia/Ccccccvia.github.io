@@ -1,0 +1,63 @@
+---
+import { locales, pages, pagePath, ui, type Locale, type Page } from '../i18n/ui';
+import '../styles/global.css';
+
+interface Props {
+  locale: Locale;
+  page: Page;
+  description: string;
+  title?: string;
+  theme?: 'light' | 'library';
+}
+
+const { locale, page, description, title: pageTitle, theme = 'light' } = Astro.props;
+const text = ui[locale];
+const otherLocale = locale === 'zh' ? 'en' : 'zh';
+const title = pageTitle ? `${pageTitle} · KnowledgeOS` : page === 'home' ? 'KnowledgeOS' : `${text.nav[page]} · KnowledgeOS`;
+const localizedPath = (language: Locale) => Astro.url.pathname.replace(/^\/(zh|en)\//, `/${language}/`);
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang={locale === 'zh' ? 'zh-CN' : 'en'} data-theme={theme}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={theme === 'library' ? '#211c2c' : '#173d52'} />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    {locales.map((language) => (
+      <link rel="alternate" hreflang={language === 'zh' ? 'zh-CN' : 'en'} href={new URL(localizedPath(language), Astro.site)} />
+    ))}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{text.skip}</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href={pagePath(locale, 'home')}>
+          <img src="/favicon.svg" alt="" width="32" height="32" />
+          <span>KnowledgeOS</span>
+        </a>
+        <nav aria-label={text.navigation}>
+          {pages.map((item) => (
+            <a href={pagePath(locale, item)} aria-current={page === item ? 'page' : undefined}>{text.nav[item]}</a>
+          ))}
+        </nav>
+        <a class="language-switch" href={localizedPath(otherLocale)} aria-label={text.language} hreflang={otherLocale === 'zh' ? 'zh-CN' : 'en'} lang={otherLocale === 'zh' ? 'zh-CN' : 'en'}>
+          {otherLocale === 'zh' ? '中文' : 'EN'}
+        </a>
+      </div>
+    </header>
+    <main id="main" class="container" tabindex="-1">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>KnowledgeOS <span aria-hidden="true">/</span> ccccccvia</span>
+        <span>{text.footer}</span>
+        <span class="status"><span aria-hidden="true"></span>{text.status}</span>
+      </div>
+    </footer>
+  </body>
+</html>

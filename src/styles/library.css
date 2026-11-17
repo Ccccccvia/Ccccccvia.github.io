@@ -1,0 +1,172 @@
+[data-theme="library"] {
+  color-scheme: dark;
+  --ink: #eee8dc;
+  --muted: #b9afc4;
+  --line: #4a3e54;
+  --paper: #211c2c;
+  --gold: #dcc28e;
+  background: var(--paper);
+}
+[data-theme="library"] body {
+  background: radial-gradient(ellipse at 50% 12%, #54405b55, transparent 55%), #211c2c;
+}
+[data-theme="library"] .container { width: min(1180px, calc(100% - 64px)); }
+[data-theme="library"] .site-header { background: #1b1823ee; border-color: #493d514d; }
+[data-theme="library"] .header-inner { min-height: 74px; }
+[data-theme="library"] .brand { font-weight: 500; letter-spacing: .3px; }
+[data-theme="library"] .brand img { filter: sepia(1) brightness(1.9); }
+[data-theme="library"] .site-header nav a:hover,
+[data-theme="library"] .site-header nav a[aria-current="page"] { background: #ffffff08; color: var(--gold); }
+[data-theme="library"] .language-switch:hover { background: #ffffff0d; }
+[data-theme="library"] .skip-link { background: #dcc28e; color: #211c2c; }
+[data-theme="library"] .site-footer { background: #1b1823; border-color: #493d514d; }
+[data-theme="library"] :is(a, button, input):focus-visible { outline: 3px solid #d8b66d; outline-offset: 5px; }
+[data-theme="library"] button { font: inherit; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.small-label { font-size: 10px; letter-spacing: 2.3px; font-weight: 600; color: var(--gold); }
+.library-intro { padding: 34px 0 38px; text-align: center; position: relative; }
+.atlas-emblem { width: 45px; height: 45px; margin: 0 auto 15px; border: 1px solid #b89c685e; border-radius: 50%; display: grid; place-items: center; color: var(--gold); position: relative; }
+.atlas-emblem::before { content: ''; position: absolute; inset: 5px -5px; border: 1px solid #b89c684a; border-radius: 50%; transform: rotate(-32deg); }
+.atlas-emblem span { font-size: 32px; line-height: 1; }
+.library-intro h1 { font-family: Georgia, "Songti SC", SimSun, serif; font-size: clamp(30px, 4vw, 45px); font-weight: 400; letter-spacing: 1px; margin-top: 14px; line-height: 1.4; }
+.library-lead { font-size: 14px; color: #bcb1c5; margin: 12px auto 24px; }
+.library-search { width: min(660px, 100%); margin: auto; display: flex; align-items: center; gap: 14px; padding: 0 17px; height: 58px; border: 1px solid #bca06d; border-radius: 5px; background: #17151f8a; box-shadow: 0 0 0 4px #d4b47807; color: var(--gold); }
+.library-search:focus-within { border-color: #f1d393; box-shadow: 0 0 0 3px #d4b47820; }
+.library-search input { min-width: 0; flex: 1; border: 0; background: transparent; color: #eee8dc; font: inherit; font-size: 15px; height: 100%; }
+.library-search input::placeholder { color: #a299b0; }
+.library-search input:focus-visible { outline: none; }
+.clear-search { min-height: 42px; background: transparent; color: #c6b8ce; border: 0; cursor: pointer; font-size: 12px !important; }
+.library-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 15px; }
+.library-actions :is(a, button) { display: inline-flex; align-items: center; justify-content: center; gap: 24px; min-height: 42px; border: 1px solid #76647b; border-radius: 4px; padding: 8px 17px; text-decoration: none; font-size: 12px; background: #ffffff03; color: #dfd6e7; }
+.library-actions a:hover { background: #d4b47812; border-color: #c6ad7e; }
+.library-actions button:disabled { color: #b3a7bb; border-style: dashed; border-color: #5c4f68; cursor: not-allowed; }
+.catalog { scroll-margin-top: 24px; }
+.catalog-toolbar { display: flex; justify-content: space-between; align-items: center; padding: 21px 0; border-top: 1px solid #6d59794d; border-bottom: 1px solid #6d59794d; gap: 18px; }
+.catalog-toolbar .small-label { font-size: 9px; }
+.catalog-toolbar h2 { font-size: 20px; font-weight: 500; margin-top: 6px; }
+.catalog-count { display: flex; gap: 9px; align-items: center; font-size: 12px; color: #c7bdcf; flex-wrap: wrap; }
+.preview-dot { display: inline-block; width: 5px; height: 5px; background: #d7ba80; border-radius: 50%; }
+.preview-badge { display: inline-block; border: 1px solid #8c765b80; color: #dbc398; padding: 4px 8px; border-radius: 3px; font-size: 10px; letter-spacing: .6px; line-height: 1.6; }
+.catalog-grid { display: grid; grid-template-columns: 324px 1fr; gap: 76px; align-items: start; padding: 32px 0 20px; }
+.catalog-item { min-width: 0; }
+.catalog-caption { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; padding-inline: 4px; color: #baaec5; font-size: 11px; }
+.catalog-caption > :last-child { color: var(--gold); }
+.collection-note { max-width: 440px; padding-top: 75px; }
+.note-index { font-family: monospace; color: #a395ad; font-size: 10px; letter-spacing: 2px; }
+.collection-note h3 { font-family: Georgia, "Songti SC", SimSun, serif; font-size: 28px; font-weight: 400; margin-block: 18px; color: #ddd2e3; }
+.collection-note p { color: #b4a7be; font-size: 14px; line-height: 2; }
+.note-rule { width: 56px; height: 1px; background: #c7a77673; margin: 28px 0 18px; }
+.collection-note .collection-note-foot { color: #a394af; font-size: 11px; letter-spacing: .5px; }
+.knowledge-card { display: block; width: 100%; padding: 9px; border: 1px solid #9e8764; border-radius: 14px; text-decoration: none; color: #2c2930; background: linear-gradient(145deg, #272430, #11131d 45%, #433846); box-shadow: 0 16px 35px #0005, inset 0 0 0 2px #14131a; }
+.knowledge-card-link { transition: transform .2s ease, box-shadow .2s ease; }
+.knowledge-card-link:hover { transform: translateY(-6px); box-shadow: 0 22px 45px #0007, 0 0 0 1px #d8be86; }
+.card-rim { padding: 5px; border-radius: 8px; background: linear-gradient(110deg, #a69672, #ddd0a3 32%, #82745e 75%, #b7a580); box-shadow: inset 0 0 0 1px #e0d3a650; }
+.card-title { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 10px; border: 1px solid #6c604d; border-radius: 7px 7px 3px 3px; background: linear-gradient(110deg, #f5edd9, #d7c9aa); font-family: Georgia, "Songti SC", SimSun, serif; font-size: 21px; font-weight: 700; box-shadow: 0 2px 3px #0003; }
+.card-sigil { display: grid; place-items: center; border: 1px solid #807252; border-radius: 50%; width: 25px; height: 25px; font: 22px Georgia, serif; color: #5d4e39; }
+.card-art { aspect-ratio: 1.5; margin: 4px 2px 0; border: 1px solid #665743; background: #332b43; overflow: hidden; }
+.card-art img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.card-type { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 7px 9px; border: 1px solid #77654d; border-radius: 3px; background: linear-gradient(100deg, #e9dec1, #cbb997); font-size: 11px; font-weight: 600; }
+.card-type > :last-child { letter-spacing: 1px; font-size: 8px; }
+.card-rules { background: linear-gradient(120deg, #f7f0df, #e4dac5); margin: 3px 2px 0; padding: 12px; min-height: 152px; border: 1px solid #948062; }
+.card-subtitle { font-family: Georgia, "Songti SC", SimSun, serif; font-size: 13px; font-weight: 600; line-height: 1.65; }
+.card-equations { display: flex; justify-content: space-between; gap: 8px; border-block: 1px solid #9b85613b; margin: 9px 0; padding: 7px 0; font-size: 11px; font-family: "Consolas", monospace; }
+.card-equations b { font-weight: 600; margin-left: 6px; }
+.card-summary { font-size: 11px; line-height: 1.8; color: #534c47; }
+.card-bottom { display: flex; justify-content: space-between; align-items: center; gap: 5px; color: #302d29; padding: 7px 5px 2px; font-family: monospace; font-size: 8px; letter-spacing: .5px; }
+.card-bottom > :last-child { font-size: 16px; line-height: 1; }
+.search-empty { margin-top: 20px; border: 1px dashed #6d5979; padding: 35px; text-align: center; }
+.search-empty h3 { font-size: 18px; }
+.search-empty p { color: var(--muted); margin-top: 10px; font-size: 14px; }
+.catalog [hidden] { display: none !important; }
+.breadcrumbs { display: flex; justify-content: flex-start; gap: 16px; margin: 0; padding: 22px 0; font-size: 12px; color: #b7a8c5; }
+.breadcrumbs a { padding: 8px 0; color: #e1c795; font-size: 12px; }
+.breadcrumbs a:hover { background: #332a40; color: #f3dba8; }
+[data-theme="library"] .article-panel :is(a, button, input):focus-visible { outline-color: #604675; }
+.knowledge-detail { display: grid; grid-template-columns: 306px minmax(0, 1fr); gap: 40px; align-items: start; }
+.detail-sidebar { min-width: 0; }
+.article-toc { display: flex; flex-direction: column; align-items: stretch; margin: 26px 0 0; padding: 8px 13px; gap: 0; }
+.article-toc h2 { color: #d2c2b1; font-size: 11px; margin-bottom: 10px; letter-spacing: 1px; }
+.article-toc a { white-space: normal; font-size: 12px; min-height: 36px; padding: 8px 0 8px 12px; border-left: 1px solid #67566f; line-height: 1.7; }
+.article-toc a:hover { background: transparent; color: #dfc693; border-radius: 0; border-color: #d5b980; }
+.article-panel { min-width: 0; background: #f4f0e7; color: #342e3b; border: 1px solid #cdbf9f; border-radius: 7px; padding: 34px 38px; box-shadow: 0 14px 35px #0002; color-scheme: light; }
+.article-header { border-bottom: 1px solid #d6cdbd; padding-bottom: 23px; margin-bottom: 26px; }
+.article-kicker { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.article-kicker .small-label { color: #796440; }
+.article-kicker .preview-badge { color: #71613f; border-color: #c7b999; }
+.article-header h1 { font-family: Georgia, "Songti SC", SimSun, serif; font-weight: 400; font-size: clamp(34px, 4vw, 46px); letter-spacing: -.5px; margin-top: 22px; }
+.article-subtitle { font-size: 16px; color: #6b5c72; margin-top: 10px; }
+.article-tags { display: flex; flex-wrap: wrap; gap: 7px; list-style: none; margin: 18px 0 13px; padding: 0; }
+.article-tags li { border: 1px solid #d9cfbf; padding: 3px 8px; border-radius: 3px; font-size: 10px; color: #695a68; }
+.article-date { color: #756c72; font-size: 10px; }
+.article-date time { margin-left: 6px; font-variant-numeric: tabular-nums; }
+.prose { font-size: 14px; line-height: 1.9; }
+.prose h2 { font-size: 20px; font-weight: 600; margin: 32px 0 13px; scroll-margin-top: 24px; line-height: 1.65; }
+.prose h2:first-child { margin-top: 0; }
+.prose p { line-height: 1.95; margin: 12px 0; }
+.prose a { color: #685179; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.prose table { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; font-size: 12px; margin: 17px 0; }
+.prose :is(th, td) { padding: 10px 12px; border: 1px solid #d5cab9; text-align: left; white-space: nowrap; }
+.prose th { background: #e6ddcc; font-weight: 600; }
+.prose pre { overflow-x: auto; padding: 18px; border-radius: 4px; font-size: 12px; line-height: 1.9; border: 1px solid #ded4c5; }
+.prose p > code { background: #e4ddcf; padding: 2px 4px; border-radius: 3px; }
+.unit-scale { border: 1px solid #b9a884; background: #eae3d3; padding: 24px; margin-top: 32px; border-radius: 4px; }
+.scale-heading { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.scale-heading .small-label { color: #706046; }
+.scale-constant { color: #665b68; font-size: 10px; font-family: monospace; }
+.unit-scale h2 { font-size: 18px; margin: 12px 0 20px; scroll-margin-top: 24px; }
+.scale-options { border: 0; padding: 0; margin: 0; display: flex; gap: 10px; }
+.scale-options label { flex: 1; min-width: 0; cursor: pointer; position: relative; }
+.scale-options input { position: absolute; top: 14px; left: 12px; accent-color: #655271; }
+.scale-options label > span { display: flex; flex-direction: column; padding: 10px 10px 10px 35px; border: 1px solid #bdb19f; border-radius: 4px; font-size: 13px; line-height: 1.7; }
+.scale-options label:has(input:checked) > span { border-color: #796188; background: #fff9ed; }
+.scale-options small { font-size: 9px; color: #756c73; }
+.scale-result { text-align: center; margin: 24px 0 16px; color: #54425d; }
+.scale-result strong { font-size: clamp(26px, 4vw, 38px); font-family: Georgia, serif; font-variant-numeric: tabular-nums; font-weight: 400; }
+.scale-result > span { font-size: 16px; }
+.byte-strip { display: flex; gap: 3px; height: 26px; }
+.byte-strip span { flex: 1; background: #7a7f91; border-radius: 1px; }
+.byte-strip span:nth-child(4n) { background: #a0917a; }
+.unit-scale > p { color: #6a5f69; font-size: 11px; text-align: center; margin-top: 12px; }
+.article-end { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; border-top: 1px solid #d6cdbd; padding-top: 22px; margin-top: 30px; font-size: 11px; color: #75656f; }
+.article-end a { color: #634e70; text-underline-offset: 4px; }
+@media (min-width: 1000px) { .detail-sidebar { position: sticky; top: 24px; } }
+@media (max-width: 850px) {
+  .catalog-grid { gap: 35px; grid-template-columns: minmax(250px, 310px) 1fr; }
+  .collection-note { padding-top: 40px; }
+  .knowledge-detail { grid-template-columns: 245px minmax(0, 1fr); gap: 22px; }
+  .article-panel { padding: 25px; }
+  .detail-sidebar .card-summary { font-size: 10px; }
+  .detail-sidebar .card-equations { flex-direction: column; }
+}
+@media (max-width: 680px) {
+  [data-theme="library"] .container { width: calc(100% - 32px); }
+  .library-intro { padding-top: 25px; }
+  .library-intro h1 { font-size: 30px; }
+  .library-lead { font-size: 12px; max-width: 340px; }
+  .library-search { gap: 10px; padding: 0 12px; }
+  .library-search input { font-size: 13px; }
+  .catalog-toolbar { align-items: flex-start; }
+  .catalog-count { justify-content: flex-end; max-width: 130px; }
+  .catalog-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .catalog-item { width: min(324px, 100%); margin-inline: auto; }
+  .collection-note { max-width: 420px; padding: 14px 8px 0; margin-inline: auto; }
+  .collection-note h3 { font-size: 23px; }
+  .knowledge-detail { grid-template-columns: minmax(0, 1fr); }
+  .detail-sidebar { width: min(306px, 100%); margin-inline: auto; }
+  .article-toc { display: none; }
+  .detail-sidebar .card-equations { flex-direction: row; }
+  .article-panel { padding: 25px 20px; }
+  .prose { font-size: 13px; }
+  .prose h2 { font-size: 19px; }
+  .unit-scale { padding: 17px; }
+  .scale-options { gap: 6px; }
+  .scale-options label > span { padding-left: 29px; }
+  .scale-options input { left: 8px; }
+  .scale-options small { font-size: 8px; }
+  .byte-strip { gap: 2px; }
+  .article-kicker .preview-badge { font-size: 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .knowledge-card-link { transition: none; }
+  .knowledge-card-link:hover { transform: none; }
+}

@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContentOutline from '../../components/ContentOutline.astro';
+import { locales, ui, type Locale } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return locales.map((locale) => ({ params: { lang: locale }, props: { locale } }));
+}
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const text = ui[locale].projects;
+---
+<BaseLayout locale={locale} page="projects" description={text.description}>
+  <header class="intro">
+    <p class="eyebrow" lang="en">{text.eyebrow}</p>
+    <h1>{text.title}</h1>
+    <p class="lead">{text.description}</p>
+  </header>
+  <section class="project-placeholder" aria-labelledby="projects-empty-title">
+    <div class="placeholder-copy">
+      <h2 id="projects-empty-title">{text.emptyTitle}</h2>
+      <p>{text.emptyDescription}</p>
+      <p class="secondary">{text.note}</p>
+    </div>
+    <div class="media-placeholder ocean">
+      <span class="portal-label">{text.mediaLabel}</span>
+      <svg viewBox="0 0 64 48" width="64" height="48" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="7" width="54" height="34" rx="4" /><path d="M5 15h54M15 7v8m10-8v8m10-8v8m10-8v8M17 31h30" /></svg>
+      <h3>{text.mediaTitle}</h3>
+      <p>{text.mediaDescription}</p>
+    </div>
+  </section>
+  <ContentOutline title={text.structureTitle} sections={text.sections} />
+</BaseLayout>

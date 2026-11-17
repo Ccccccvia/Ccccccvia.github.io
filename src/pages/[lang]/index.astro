@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionArt from '../../components/SectionArt.astro';
+import { locales, pagePath, ui, type Locale } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return locales.map((locale) => ({ params: { lang: locale }, props: { locale } }));
+}
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const text = ui[locale].home;
+---
+<BaseLayout locale={locale} page="home" description={text.description}>
+  <section class="intro home-intro" aria-labelledby="home-title">
+    <p class="eyebrow" lang="en">{text.eyebrow}</p>
+    <h1 id="home-title">{text.title}</h1>
+    <p class="lead">{text.description}</p>
+  </section>
+  <div class="portal-grid">
+    <a class="portal sky" href={pagePath(locale, 'knowledge')}>
+      <span class="portal-label">{text.sky}</span>
+      <SectionArt kind="sky" />
+      <h2>{text.knowledge}</h2>
+      <p>{text.knowledgeDescription}</p>
+      <span class="portal-action">{text.browseKnowledge}<span aria-hidden="true">↗</span></span>
+    </a>
+    <a class="portal ocean" href={pagePath(locale, 'projects')}>
+      <span class="portal-label">{text.ocean}</span>
+      <SectionArt kind="ocean" />
+      <h2>{text.projects}</h2>
+      <p>{text.projectsDescription}</p>
+      <span class="portal-action">{text.browseProjects}<span aria-hidden="true">↗</span></span>
+    </a>
+  </div>
+  <p class="build-note">{text.note}</p>
+</BaseLayout>

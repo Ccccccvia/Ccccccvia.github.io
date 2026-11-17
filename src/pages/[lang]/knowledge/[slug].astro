@@ -1,0 +1,46 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import KnowledgeCard from '../../../components/KnowledgeCard.astro';
+import UnitScale from '../../../components/UnitScale.astro';
+import '../../../styles/library.css';
+
+export async function getStaticPaths() {
+  return (await getCollection('knowledge')).map((entry) => ({
+    params: { lang: entry.data.locale, slug: entry.data.key },
+    props: { entry },
+  }));
+}
+interface Props { entry: CollectionEntry<'knowledge'>; }
+const { entry } = Astro.props;
+const { locale, title, subtitle, summary, tags, cardId, updated, status, key } = entry.data;
+const zh = locale === 'zh';
+const { Content, headings } = await render(entry);
+---
+<BaseLayout locale={locale} page="knowledge" title={title} description={summary} theme="library">
+  <nav class="breadcrumbs" aria-label={zh ? '面包屑导航' : 'Breadcrumb'}>
+    <a href={`/${locale}/knowledge/`}>{zh ? '卡牌目录' : 'Card catalog'}</a><span aria-hidden="true">/</span><span aria-current="page">{cardId}</span>
+  </nav>
+  <div class="knowledge-detail">
+    <aside class="detail-sidebar" aria-label={zh ? '卡面与页内导航' : 'Card and page contents'}>
+      <KnowledgeCard entry={entry} linked={false} />
+      <nav class="article-toc" aria-label={zh ? '本页内容' : 'On this page'}>
+        <h2>{zh ? '本页内容' : 'On this page'}</h2>
+        {headings.filter((heading) => heading.depth === 2).map((heading) => <a href={`#${heading.slug}`}>{heading.text}</a>)}
+        {key === 'mb-vs-mib' && <a href="#scale-heading">{zh ? '互动：换一把尺' : 'Try a different ruler'}</a>}
+      </nav>
+    </aside>
+    <article class="article-panel">
+      <header class="article-header">
+        <div class="article-kicker"><span class="small-label" lang="en">{cardId} / CONCEPT</span>{status === 'preview' && <span class="preview-badge">{zh ? '预览版' : 'PREVIEW'}</span>}</div>
+        <h1>{title}</h1>
+        <p class="article-subtitle">{subtitle}</p>
+        <ul class="article-tags">{tags.map((tag) => <li>{tag}</li>)}</ul>
+        <p class="article-date">{zh ? '内容审校' : 'Content reviewed'} <time datetime={updated}>{updated}</time></p>
+      </header>
+      <div class="prose"><Content /></div>
+      {key === 'mb-vs-mib' && <UnitScale locale={locale} />}
+      <footer class="article-end"><span>{zh ? '理解一个概念，再收集下一张。' : 'Understand one idea. Then discover the next.'}</span><a href={`/${locale}/knowledge/#cards`}>{zh ? '返回卡牌目录' : 'Back to the catalog'} <span aria-hidden="true">↗</span></a></footer>
+    </article>
+  </div>
+</BaseLayout>

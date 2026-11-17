@@ -1,0 +1,34 @@
+---
+import type { Locale } from '../i18n/ui';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const zh = locale === 'zh';
+---
+<section class="unit-scale" aria-labelledby="scale-heading">
+  <div class="scale-heading"><span class="small-label">{zh ? '亲手试一试' : 'TRY THE IDEA'}</span><span class="scale-constant">1,048,576 B</span></div>
+  <h2 id="scale-heading">{zh ? '换一把尺，文件会变吗？' : 'Change the ruler. Does the file change?'}</h2>
+  <fieldset class="scale-options" disabled>
+    <legend class="sr-only">{zh ? '选择显示单位' : 'Choose the display unit'}</legend>
+    <label><input type="radio" name="display-unit" value="MB" checked /><span>MB <small>÷ 1,000,000</small></span></label>
+    <label><input type="radio" name="display-unit" value="MiB" /><span>MiB <small>÷ 1,048,576</small></span></label>
+  </fieldset>
+  <div class="scale-result" aria-live="polite" aria-atomic="true"><strong data-scale-value>1.048576</strong> <span data-scale-unit>MB</span></div>
+  <div class="byte-strip" aria-hidden="true">{Array.from({ length: 32 }, (_, i) => <span style={`--i:${i}`}></span>)}</div>
+  <p>{zh ? '同样的 1,048,576 字节。变的是显示单位，不是数据。' : 'The same 1,048,576 bytes. Only the display unit changes, not the data.'}</p>
+  <noscript><p>{zh ? '换算关系：1.048576 MB = 1 MiB；开启 JavaScript 可切换显示。' : 'Conversion: 1.048576 MB = 1 MiB. Enable JavaScript to switch the display.'}</p></noscript>
+</section>
+<script>
+  const scale = document.querySelector('.unit-scale');
+  scale?.addEventListener('change', (event) => {
+    const input = event.target;
+    if (!(input instanceof HTMLInputElement)) return;
+    const value = scale.querySelector('[data-scale-value]');
+    const unit = scale.querySelector('[data-scale-unit]');
+    if (value && unit) {
+      value.textContent = input.value === 'MiB' ? '1' : '1.048576';
+      unit.textContent = input.value;
+    }
+  });
+  const options = scale?.querySelector<HTMLFieldSetElement>('.scale-options');
+  if (options) options.disabled = false;
+</script>

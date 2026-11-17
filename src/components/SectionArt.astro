@@ -1,0 +1,23 @@
+---
+interface Props { kind: 'sky' | 'ocean'; }
+const { kind } = Astro.props;
+---
+<svg class="section-art" viewBox="0 0 360 112" fill="none" aria-hidden="true" focusable="false">
+  {kind === 'sky' ? (
+    <g stroke="currentColor" stroke-width="1.5">
+      <path d="M32 88h296M70 62h90c12-19-7-37-22-28-11-29-51-24-55 2-20-5-29 17-13 26Z" />
+      <path d="M211 50h70c10-14-1-26-15-23-4-20-33-19-38 0-16-5-29 13-17 23Z" />
+      <path d="m110 88 70-16 72 16" stroke-dasharray="4 5" />
+      <circle cx="110" cy="88" r="4" fill="currentColor" />
+      <circle cx="180" cy="72" r="4" fill="currentColor" />
+      <circle cx="252" cy="88" r="4" fill="currentColor" />
+    </g>
+  ) : (
+    <g stroke="currentColor" stroke-width="1.5">
+      <path d="M32 32q37-22 74 0t74 0t74 0t74 0M32 51q37-22 74 0t74 0t74 0t74 0" />
+      <path d="m154 70-17 12 17 12m52-24 17 12-17 12m-19-28-16 33" stroke-linecap="round" stroke-linejoin="round" />
+      <circle cx="74" cy="85" r="5" /><circle cx="95" cy="69" r="3" />
+      <circle cx="276" cy="88" r="7" /><circle cx="290" cy="66" r="3" />
+    </g>
+  )}
+</svg>

@@ -1,0 +1,19 @@
+---
+interface Props {
+  title: string;
+  sections: ReadonlyArray<{ readonly title: string; readonly text: string }>;
+}
+const { title, sections } = Astro.props;
+---
+<section class="content-outline" aria-labelledby="outline-title">
+  <h2 id="outline-title">{title}</h2>
+  <ol class="outline-grid">
+    {sections.map((section, index) => (
+      <li>
+        <span class="outline-number" aria-hidden="true">0{index + 1}</span>
+        <h3>{section.title}</h3>
+        <p>{section.text}</p>
+      </li>
+    ))}
+  </ol>
+</section>

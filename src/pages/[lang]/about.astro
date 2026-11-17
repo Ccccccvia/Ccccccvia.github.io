@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { locales, ui, type Locale } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return locales.map((locale) => ({ params: { lang: locale }, props: { locale } }));
+}
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const text = ui[locale].about;
+---
+<BaseLayout locale={locale} page="about" description={text.description}>
+  <header class="intro">
+    <p class="eyebrow" lang="en">{text.eyebrow}</p>
+    <h1>{text.title}</h1>
+    <p class="lead">{text.description}</p>
+  </header>
+  <div class="about-copy">
+    <section>
+      <h2>{text.approachTitle}</h2>
+      <p>{text.approach}</p>
+    </section>
+    <section>
+      <h2>{text.publicationTitle}</h2>
+      <p>{text.publication}</p>
+    </section>
+    <a class="text-link" href="https://github.com/ccccccvia">{text.profile}<span aria-hidden="true"> ↗</span></a>
+  </div>
+</BaseLayout>
