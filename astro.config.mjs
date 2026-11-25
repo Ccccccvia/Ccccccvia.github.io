@@ -10,4 +10,8 @@ export default defineConfig({
     routing: { prefixDefaultLocale: true, redirectToDefaultLocale: false },
   },
   devToolbar: { enabled: false },
+  vite: {
+    server: { strictPort: true },
+    preview: { strictPort: true },
+  },
 });

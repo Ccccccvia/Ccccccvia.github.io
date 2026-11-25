@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="570" viewBox="0 0 800 570" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">An opaque handle refers indirectly to a resource</title>
+  <desc id="desc">Handle h is passed to ReadFile. The API checks validity, type, and granted rights before operating on the kernel file object. Closing h ends one owned reference; it does not by itself delete the file on disk. The handle is not a dereferenceable pointer or physical address.</desc>
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="800" y2="570" gradientUnits="userSpaceOnUse"><stop stop-color="#141c30"/><stop offset=".55" stop-color="#2c2947"/><stop offset="1" stop-color="#4b3857"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" stroke="#d7d3de" stroke-opacity=".04"/></pattern>
+    <marker id="gold-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="m1 1 7 4-7 4" stroke="#c5ab7d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="teal-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="m1 1 7 4-7 4" stroke="#85acb0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  </defs>
+  <path d="M0 0h800v570H0z" fill="url(#night)"/>
+  <path d="M32 32h736v506H32z" fill="url(#grid)"/>
+  <path d="M32 76V32h44M724 32h44v44M32 494v44h44M724 538h44v-44" stroke="#c5ab7d" stroke-opacity=".35"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle">
+    <text x="400" y="73" fill="#ded8e3" font-size="21" letter-spacing="2">INDIRECT RESOURCE REFERENCE</text>
+    <text x="400" y="127" fill="#c6becd" font-size="17">An identifier, not an address to dereference</text>
+    <rect x="50" y="190" width="134" height="85" rx="14" fill="#c5ab7d" fill-opacity=".1" stroke="#c5ab7d" stroke-width="1.8"/>
+    <rect x="222" y="190" width="150" height="85" rx="14" fill="#192236" stroke="#c5ab7d" stroke-width="1.5"/>
+    <rect x="410" y="190" width="158" height="85" rx="14" fill="#192236" stroke="#85acb0" stroke-width="1.5"/>
+    <rect x="606" y="190" width="144" height="85" rx="14" fill="#85acb0" fill-opacity=".1" stroke="#85acb0" stroke-width="1.8"/>
+    <text x="117" y="246" fill="#ead8b7" font-family="monospace" font-size="38">h</text>
+    <text x="297" y="241" fill="#ead8b7" font-size="24">API</text>
+    <text x="489" y="241" fill="#b7d4d5" font-size="22">CHECK</text>
+    <text x="678" y="241" fill="#b7d4d5" font-size="24">FILE</text>
+    <path d="M187 232h26" stroke="#c5ab7d" stroke-width="2" marker-end="url(#gold-arrow)"/>
+    <path d="M375 232h26" stroke="#c5ab7d" stroke-width="2" marker-end="url(#gold-arrow)"/>
+    <path d="M571 232h26" stroke="#85acb0" stroke-width="2" marker-end="url(#teal-arrow)"/>
+    <g font-size="15" fill="#c6becd"><text x="117" y="305">opaque ID</text><text x="297" y="305">ReadFile</text><text x="489" y="305">valid + type + rights</text><text x="678" y="305">kernel object</text></g>
+    <path d="M117 325v39" stroke="#c5ab7d" stroke-width="1.5" stroke-dasharray="4 5" marker-end="url(#gold-arrow)"/>
+    <rect x="50" y="379" width="300" height="101" rx="14" fill="#192236" stroke="#c5ab7d" stroke-dasharray="5 5"/>
+    <rect x="450" y="379" width="300" height="101" rx="14" fill="#192236" stroke="#85acb0" stroke-opacity=".7"/>
+    <text x="200" y="419" fill="#ead8b7" font-family="monospace" font-size="22">CloseHandle(h)</text>
+    <text x="200" y="454" fill="#c6becd" font-size="16">Ends this reference</text>
+    <text x="400" y="443" fill="#ac9eaf" font-size="36">≠</text>
+    <text x="600" y="419" fill="#b7d4d5" font-size="21">DELETE FILE</text>
+    <text x="600" y="454" fill="#c6becd" font-size="16">File on disk may remain</text>
+    <text x="400" y="521" fill="#c6becd" font-size="16">Ownership + matching API + valid lifetime</text>
+  </g>
+</svg>

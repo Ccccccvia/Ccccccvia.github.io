@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="570" viewBox="0 0 800 570" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Thirteen query trips versus two batches</title>
+  <desc id="desc">One author query and twelve separate book queries fan out on the left. On the right one author query and one batch book query lead to grouping by author identifier.</desc>
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="800" y2="570" gradientUnits="userSpaceOnUse"><stop stop-color="#171d34"/><stop offset=".55" stop-color="#332b49"/><stop offset="1" stop-color="#50405d"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" stroke="#d8c5a5" stroke-opacity=".045"/></pattern>
+    <marker id="gold-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="m0 0 8 4-8 4" fill="#d3b47e"/></marker>
+    <marker id="teal-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="m0 0 8 4-8 4" fill="#9fc9c6"/></marker>
+  </defs>
+  <path fill="url(#night)" d="M0 0h800v570H0z"/>
+  <path fill="url(#grid)" d="M0 0h800v570H0z"/>
+  <g font-family="monospace" fill="#eadfc9">
+    <text x="55" y="67" font-size="13" letter-spacing="3">07 / QUERY TOPOLOGY</text>
+    <text x="55" y="103" font-family="Georgia,serif" font-size="27">Many trips. One batch.</text>
+  </g>
+  <rect x="55" y="125" width="332" height="354" rx="18" fill="#211f35" fill-opacity=".7" stroke="#a88d69" stroke-opacity=".4"/>
+  <rect x="413" y="125" width="332" height="354" rx="18" fill="#202d3b" fill-opacity=".65" stroke="#8fb9b8" stroke-opacity=".5"/>
+  <g font-family="monospace" font-size="12" fill="#dbc39b">
+    <text x="76" y="150" letter-spacing="2">PER AUTHOR</text>
+    <text x="434" y="150" fill="#b6d8d3" letter-spacing="2">BATCHED</text>
+  </g>
+  <rect x="78" y="170" width="112" height="35" rx="7" fill="#4b3d49" stroke="#d3b47e"/>
+  <text x="134" y="192" text-anchor="middle" font-family="monospace" font-size="13" fill="#ead9b7">1 AUTHORS</text>
+  <path d="M191 188H306" stroke="#d3b47e" stroke-width="2" marker-end="url(#gold-arrow)"/>
+  <g stroke="#d3b47e" stroke-width="1.5">
+    <path d="M310 177v25c0 10 48 10 48 0v-25" fill="#51414b"/>
+    <ellipse cx="334" cy="177" rx="24" ry="8" fill="#61505a"/>
+    <path d="M310 189c0 10 48 10 48 0M334 211v215"/>
+  </g>
+  <path d="M134 205v101" stroke="#d3b47e" stroke-opacity=".65" stroke-dasharray="3 5"/>
+  <circle cx="134" cy="320" r="23" fill="#53424d" stroke="#d3b47e"/>
+  <text x="134" y="325" text-anchor="middle" font-family="monospace" font-size="14" fill="#ead9b7">12</text>
+  <text x="79" y="372" font-family="monospace" font-size="11" fill="#c8b69f">authors</text>
+  <g stroke="#d3b47e" stroke-opacity=".58" stroke-width="1.2">
+    <path d="M155 310 235 223M156 313 235 241M157 316 235 259M157 318 235 277M157 320 235 295M157 322 235 313M157 324 235 331M157 326 235 349M156 329 235 367M154 331 235 385M152 334 235 403M150 337 235 421"/>
+    <path d="M275 223h59M275 241h59M275 259h59M275 277h59M275 295h59M275 313h59M275 331h59M275 349h59M275 367h59M275 385h59M275 403h59M275 421h59"/>
+  </g>
+  <g fill="#4b3d49" stroke="#d3b47e" stroke-opacity=".8">
+    <rect x="235" y="216" width="40" height="14" rx="4"/><rect x="235" y="234" width="40" height="14" rx="4"/>
+    <rect x="235" y="252" width="40" height="14" rx="4"/><rect x="235" y="270" width="40" height="14" rx="4"/>
+    <rect x="235" y="288" width="40" height="14" rx="4"/><rect x="235" y="306" width="40" height="14" rx="4"/>
+    <rect x="235" y="324" width="40" height="14" rx="4"/><rect x="235" y="342" width="40" height="14" rx="4"/>
+    <rect x="235" y="360" width="40" height="14" rx="4"/><rect x="235" y="378" width="40" height="14" rx="4"/>
+    <rect x="235" y="396" width="40" height="14" rx="4"/><rect x="235" y="414" width="40" height="14" rx="4"/>
+  </g>
+  <g fill="#ead9b7" font-family="monospace" font-size="9" text-anchor="middle">
+    <text x="255" y="227">B1</text><text x="255" y="245">B2</text><text x="255" y="263">B3</text><text x="255" y="281">B4</text>
+    <text x="255" y="299">B5</text><text x="255" y="317">B6</text><text x="255" y="335">B7</text><text x="255" y="353">B8</text>
+    <text x="255" y="371">B9</text><text x="255" y="389">B10</text><text x="255" y="407">B11</text><text x="255" y="425">B12</text>
+  </g>
+  <rect x="436" y="170" width="125" height="35" rx="7" fill="#354b53" stroke="#9fc9c6"/>
+  <text x="498" y="192" text-anchor="middle" font-family="monospace" font-size="13" fill="#c2e1d9">1 AUTHORS</text>
+  <path d="M562 188h106" stroke="#9fc9c6" stroke-width="2" marker-end="url(#teal-arrow)"/>
+  <g stroke="#9fc9c6" stroke-width="1.5">
+    <path d="M672 177v25c0 10 48 10 48 0v-25" fill="#354b53"/>
+    <ellipse cx="696" cy="177" rx="24" ry="8" fill="#466069"/>
+    <path d="M672 189c0 10 48 10 48 0M696 211v84"/>
+  </g>
+  <path d="M498 205v46" stroke="#9fc9c6" stroke-dasharray="3 5" marker-end="url(#teal-arrow)"/>
+  <rect x="436" y="259" width="186" height="72" rx="9" fill="#354b53" stroke="#9fc9c6"/>
+  <g font-family="monospace" fill="#c2e1d9" text-anchor="middle">
+    <text x="529" y="284" font-size="14">2 BOOKS</text>
+    <text x="529" y="309" font-size="12">IN (12 author IDs)</text>
+  </g>
+  <path d="M623 295h70" stroke="#9fc9c6" stroke-width="2" marker-end="url(#teal-arrow)"/>
+  <path d="M529 333v37" stroke="#9fc9c6" stroke-width="1.5" marker-end="url(#teal-arrow)"/>
+  <rect x="436" y="378" width="284" height="49" rx="9" fill="#263b47" stroke="#9fc9c6" stroke-opacity=".45"/>
+  <g stroke="#9fc9c6" stroke-width="3"><path d="M452 391v23m8-23v23m8-23v23M480 391v23m8-23v23M500 391v23m8-23v23"/></g>
+  <text x="528" y="407" font-family="monospace" font-size="12" fill="#c2e1d9">group by author_id</text>
+  <g font-family="Georgia,serif" font-size="23" text-anchor="middle">
+    <text x="221" y="462" fill="#e0c49a">1 + 12 = 13 trips</text>
+    <text x="579" y="462" fill="#b9dad5">1 + 1 = 2 trips</text>
+  </g>
+  <path d="M55 499h690" stroke="#d9c4a1" stroke-opacity=".3"/>
+  <text x="400" y="523" text-anchor="middle" font-family="monospace" font-size="12" fill="#c8bdbe">FEWER ROUND TRIPS ≠ LESS WORK IN EVERY PLAN</text>
+</svg>

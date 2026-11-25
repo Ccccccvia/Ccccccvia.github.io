@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="570" viewBox="0 0 800 570" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Separate thread stacks inside a shared address space</title>
+  <desc id="desc">One process contains threads A and B, each with a logical stack, register context, and thread-local storage. Both reach the same heap counter, initially zero. Code and globals are shared too. Separate stacks remain in the process address space, rather than forming absolute protection boundaries between threads.</desc>
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="800" y2="570" gradientUnits="userSpaceOnUse"><stop stop-color="#141c30"/><stop offset=".55" stop-color="#2c2947"/><stop offset="1" stop-color="#4b3857"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" stroke="#d7d3de" stroke-opacity=".04"/></pattern>
+    <marker id="gold-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="m1 1 7 4-7 4" stroke="#c5ab7d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="teal-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="m1 1 7 4-7 4" stroke="#85acb0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  </defs>
+  <path d="M0 0h800v570H0z" fill="url(#night)"/>
+  <path d="M32 32h736v506H32z" fill="url(#grid)"/>
+  <path d="M32 76V32h44M724 32h44v44M32 494v44h44M724 538h44v-44" stroke="#c5ab7d" stroke-opacity=".35"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle">
+    <text x="400" y="73" fill="#ded8e3" font-size="21" letter-spacing="2">SEPARATE THREADS, SHARED MEMORY</text>
+    <rect x="48" y="110" width="704" height="359" rx="20" fill="#192236" fill-opacity=".5" stroke="#ac9eaf" stroke-width="1.5"/>
+    <text x="400" y="146" fill="#c6becd" font-size="16" letter-spacing="1">ONE PROCESS · ONE ADDRESS SPACE</text>
+    <rect x="72" y="177" width="220" height="173" rx="14" fill="#c5ab7d" fill-opacity=".06" stroke="#c5ab7d" stroke-opacity=".75"/>
+    <rect x="508" y="177" width="220" height="173" rx="14" fill="#85acb0" fill-opacity=".06" stroke="#85acb0" stroke-opacity=".75"/>
+    <text x="182" y="209" fill="#ead8b7" font-size="19">THREAD A</text>
+    <text x="618" y="209" fill="#b7d4d5" font-size="19">THREAD B</text>
+    <rect x="94" y="230" width="78" height="75" rx="6" fill="#c5ab7d" fill-opacity=".1" stroke="#c5ab7d"/>
+    <path d="M95 255h76m-76 25h76" stroke="#c5ab7d" stroke-opacity=".75"/>
+    <rect x="530" y="230" width="78" height="75" rx="6" fill="#85acb0" fill-opacity=".1" stroke="#85acb0"/>
+    <path d="M531 255h76m-76 25h76" stroke="#85acb0" stroke-opacity=".75"/>
+    <text x="133" y="330" fill="#d3c2a4" font-size="15">stack A</text>
+    <text x="569" y="330" fill="#b7d4d5" font-size="15">stack B</text>
+    <rect x="191" y="230" width="77" height="32" rx="6" fill="#192236" stroke="#c5ab7d" stroke-opacity=".55"/>
+    <rect x="191" y="279" width="77" height="32" rx="6" fill="#192236" stroke="#c5ab7d" stroke-opacity=".55"/>
+    <rect x="627" y="230" width="77" height="32" rx="6" fill="#192236" stroke="#85acb0" stroke-opacity=".55"/>
+    <rect x="627" y="279" width="77" height="32" rx="6" fill="#192236" stroke="#85acb0" stroke-opacity=".55"/>
+    <g font-family="monospace" font-size="16" fill="#c6becd"><text x="230" y="252">TLS</text><text x="230" y="301">regs</text><text x="666" y="252">TLS</text><text x="666" y="301">regs</text></g>
+    <text x="400" y="207" fill="#c6becd" font-size="15">SHARED HEAP</text>
+    <rect x="328" y="230" width="144" height="108" rx="14" fill="#192236" stroke="#b4b99f" stroke-width="1.8"/>
+    <text x="400" y="269" fill="#ded8e3" font-family="monospace" font-size="19">counter</text>
+    <text x="400" y="311" fill="#ead8b7" font-family="monospace" font-size="30">0</text>
+    <path d="M293 269h27" stroke="#c5ab7d" stroke-width="2" marker-end="url(#gold-arrow)"/>
+    <path d="M507 269h-27" stroke="#85acb0" stroke-width="2" marker-end="url(#teal-arrow)"/>
+    <path d="M75 376h650" stroke="#ac9eaf" stroke-opacity=".3"/>
+    <text x="400" y="405" fill="#c6becd" font-size="16">Shared code + globals</text>
+    <text x="400" y="443" fill="#b7d4d5" font-size="16">Stacks remain inside this address space</text>
+    <text x="400" y="521" fill="#c6becd" font-size="17">Separate execution state ≠ isolated memory</text>
+  </g>
+</svg>

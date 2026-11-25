@@ -1,0 +1,82 @@
+---
+import { getKnowledgeEntries } from '../../../knowledge-content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import KnowledgeCard from '../../../components/KnowledgeCard.astro';
+import LibraryActions from '../../../components/LibraryActions.astro';
+import { locales, pagePath, type Locale } from '../../../i18n/ui';
+import { topics, topicIds, topicGroups, topicGroupFor, programmingLanguages } from '../../../knowledge';
+import '../../../styles/library.css';
+
+export function getStaticPaths() {
+  return locales.map((locale) => ({ params: { lang: locale }, props: { locale } }));
+}
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const zh = locale === 'zh';
+const entries = await getKnowledgeEntries(locale);
+const title = zh ? '全部知识卡' : 'All Cards';
+---
+<BaseLayout locale={locale} page="knowledge" title={title} description={zh ? '按主题、编程语言或关键词浏览全部知识卡。' : 'Browse every knowledge card by topic, programming language or keyword.'} theme="library">
+  <nav class="breadcrumbs" aria-label={zh ? '面包屑导航' : 'Breadcrumb'}><a href={pagePath(locale, 'knowledge')}>{zh ? '知识库' : 'Knowledge'}</a><span aria-hidden="true">/</span><span aria-current="page">{title}</span></nav>
+  <header class="collection-intro"><div><p class="small-label" lang="en">THE COMPLETE COLLECTION</p><h1>{title}</h1></div><LibraryActions locale={locale} /></header>
+  <form class="catalog-filters" role="search">
+    <label class="keyword-filter" for="card-search"><span>{zh ? '关键词' : 'Keyword'}</span><input id="card-search" name="q" type="search" placeholder={zh ? '标题、概念或标签…' : 'Titles, concepts or tags…'} autocomplete="off" /></label>
+    <label for="topic-filter"><span>{zh ? '知识模块' : 'Topic'}</span><select id="topic-filter" name="topic"><option value="">{zh ? '全部模块' : 'All topics'}</option>{topicGroups.map((group) => <optgroup label={group[locale]}>{topicIds.filter((id) => topics[id].group === group.id).map((id) => <option value={id}>{topics[id][locale]}</option>)}</optgroup>)}</select></label>
+    <label for="language-filter"><span>{zh ? '编程语言' : 'Programming language'}</span><select id="language-filter" name="language"><option value="">{zh ? '全部语言' : 'All languages'}</option>{programmingLanguages.map((language) => <option value={language}>{language}</option>)}</select></label>
+    <button type="reset" class="filter-reset">{zh ? '清除筛选' : 'Clear filters'}</button>
+  </form>
+  <noscript><p>{zh ? '下方显示全部卡片；搜索与筛选需要 JavaScript。' : 'All cards are shown below. Search and filters require JavaScript.'}</p></noscript>
+  <section class="catalog" id="cards" aria-labelledby="catalog-heading">
+    <header class="catalog-toolbar"><h2 id="catalog-heading">{zh ? '卡片收藏' : 'The card collection'}</h2><div class="catalog-count"><span id="card-count" role="status" aria-live="polite" data-locale={locale}>{zh ? `${entries.length} 张卡牌` : `${entries.length} cards`}</span><span class="preview-badge">{zh ? '内容预览' : 'CONTENT PREVIEW'}</span></div></header>
+    <div class="catalog-grid">
+      {entries.map((entry) => (
+        <article class="catalog-item" data-topic={entry.data.topic} data-languages={JSON.stringify(entry.data.languages)} data-search={[entry.data.cardId, entry.data.title, entry.data.subtitle, entry.data.summary, topicGroupFor(entry.data.topic)[locale], topics[entry.data.topic][locale], ...entry.data.languages, ...entry.data.tags].join(' ').toLocaleLowerCase()}>
+          <KnowledgeCard entry={entry} />
+          <div class="catalog-caption"><span>{entry.data.cardId} / {topics[entry.data.topic][locale]}</span><span>{zh ? '打开详情' : 'Open card'} <span aria-hidden="true">↗</span></span></div>
+        </article>
+      ))}
+    </div>
+    <div class="search-empty" hidden><h3>{zh ? '没有匹配的卡片。' : 'No matching cards.'}</h3><p>{zh ? '试试其他关键词，或清除筛选。这个模块也可能还没有卡片。' : 'Try another keyword or clear the filters. This topic may not have any cards yet.'}</p></div>
+  </section>
+</BaseLayout>
+<script>
+  const form = document.querySelector<HTMLFormElement>('.catalog-filters')!;
+  const search = form.querySelector<HTMLInputElement>('#card-search')!;
+  const topic = form.querySelector<HTMLSelectElement>('#topic-filter')!;
+  const language = form.querySelector<HTMLSelectElement>('#language-filter')!;
+  const items = [...document.querySelectorAll<HTMLElement>('.catalog-item')];
+  const counter = document.querySelector<HTMLElement>('#card-count')!;
+  const empty = document.querySelector<HTMLElement>('.search-empty')!;
+  const params = new URLSearchParams(window.location.search);
+  search.value = params.get('q') ?? '';
+  topic.value = params.get('topic') ?? '';
+  language.value = params.get('language') ?? '';
+  function filterCards() {
+    const query = search.value.trim().toLocaleLowerCase();
+    let count = 0;
+    for (const item of items) {
+      const languages: string[] = JSON.parse(item.dataset.languages!);
+      const match = item.dataset.search!.includes(query) && (!topic.value || item.dataset.topic === topic.value) && (!language.value || languages.includes(language.value));
+      item.hidden = !match;
+      if (match) count++;
+    }
+    counter.textContent = counter.dataset.locale === 'zh' ? `${count} 张卡牌` : `${count} ${count === 1 ? 'card' : 'cards'}`;
+    empty.hidden = count !== 0;
+    const url = new URL(window.location.href);
+    for (const [key, value] of [['q', search.value], ['topic', topic.value], ['language', language.value]]) {
+      if (value) url.searchParams.set(key, value);
+      else url.searchParams.delete(key);
+    }
+    window.history.replaceState(null, '', url);
+    const switcher = document.querySelector<HTMLAnchorElement>('.language-switch')!;
+    const translated = new URL(switcher.href);
+    translated.search = url.search;
+    switcher.href = translated.href;
+  }
+  form.addEventListener('submit', (event) => { event.preventDefault(); filterCards(); });
+  form.addEventListener('input', filterCards);
+  // Native reset applies default values after the reset event.
+  form.addEventListener('reset', () => setTimeout(filterCards, 0));
+  window.addEventListener('pageshow', filterCards);
+  filterCards();
+</script>

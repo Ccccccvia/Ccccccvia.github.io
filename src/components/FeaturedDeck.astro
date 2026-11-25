@@ -1,0 +1,39 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import KnowledgeCard from './KnowledgeCard.astro';
+import { featuredCardLimit } from '../knowledge';
+interface Props { entries: CollectionEntry<'knowledge'>[]; }
+const { entries } = Astro.props;
+const cards = entries.slice(0, featuredCardLimit);
+const offsets = [36, 105, 5, 82, 14, 112, 44];
+const angles = [-13, -8, -4, 0, 5, 9, 14];
+---
+<div data-featured-deck>
+  <ul class="featured-deck" aria-label={cards[0]?.data.locale === 'zh' ? `${cards.length} 张精选知识卡` : `${cards.length} featured knowledge cards`}>
+    {cards.map((entry, index) => (
+      <li class="featured-card" style={`--position:${index};--rest-y:${offsets[index]}px;--rotation:${angles[index]}deg;--layer:${index % 2 ? 2 : 1}`}>
+        <KnowledgeCard entry={entry} />
+      </li>
+    ))}
+  </ul>
+  <template>
+    {entries.map((entry) => <KnowledgeCard entry={entry} />)}
+  </template>
+</div>
+<script>
+  import { selectFeaturedCards } from '../knowledge';
+
+  document.querySelectorAll<HTMLElement>('[data-featured-deck]').forEach((deck) => {
+    const pool = deck.querySelector('template')!;
+    const list = deck.querySelector('.featured-deck')!;
+    const slots = list.querySelectorAll('.featured-card');
+    const nextCards = document.createDocumentFragment();
+    selectFeaturedCards(Array.from(pool.content.children)).forEach((card, index) => {
+      const slot = slots[index].cloneNode(false) as HTMLLIElement;
+      slot.append(card.cloneNode(true));
+      nextCards.append(slot);
+    });
+    list.replaceChildren(nextCards);
+    pool.remove();
+  });
+</script>

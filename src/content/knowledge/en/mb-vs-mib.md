@@ -5,7 +5,7 @@ cardId: K-001
 title: 'MB vs MiB'
 subtitle: 'One file, two rulers.'
 summary: 'An MB counts one million bytes; a MiB counts 1,048,576. Switching units changes the number, not the data in your file.'
-collection: 'Data & measurement'
+topic: 'organization'
 cardArt: '/images/binary-observatory.svg'
 facts:
   - { label: '1 MB', value: '10⁶ B' }

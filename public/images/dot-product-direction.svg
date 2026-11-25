@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="570" viewBox="0 0 800 570" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Dot product separates front and back at the observer</title>
+  <desc id="desc">Observer O is at world coordinates 2,1 and forward is 2,0, pointing right. The target 5,4 has displacement 3,3 and dot 6 in the teal front half-plane. Target 0,4 has displacement minus 2,3 and dot minus 4 behind. Target 2,4 lies on the vertical boundary through O with dot zero.</desc>
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="800" y2="570" gradientUnits="userSpaceOnUse"><stop stop-color="#171d34"/><stop offset=".55" stop-color="#352d4c"/><stop offset="1" stop-color="#51405d"/></linearGradient>
+    <pattern id="grid" x="90" y="150" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" stroke="#d8c5a5" stroke-opacity=".12"/></pattern>
+    <marker id="teal-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="m0 0 8 4-8 4" fill="#a4cdca"/></marker>
+    <marker id="gold-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="m0 0 8 4-8 4" fill="#d8b987"/></marker>
+  </defs>
+  <path d="M0 0h800v570H0z" fill="url(#night)"/>
+  <g fill="#eadfc9" font-family="monospace">
+    <text x="55" y="67" font-size="13" letter-spacing="3">10 / DIRECTION BY SIGN</text>
+    <text x="55" y="103" font-family="Georgia,serif" font-size="27">Front begins at the observer.</text>
+  </g>
+  <rect x="65" y="133" width="670" height="339" rx="14" fill="#24243b" stroke="#b4a3bb" stroke-opacity=".3"/>
+  <path d="M330 134h391q13 0 13 13v311q0 13-13 13H330z" fill="#6baca7" fill-opacity=".16"/>
+  <path d="M79 134h251v337H79q-13 0-13-13V147q0-13 13-13Z" fill="#d8b987" fill-opacity=".045"/>
+  <path d="M78 147h644v311H78z" fill="url(#grid)"/>
+  <path d="M330 145v314" stroke="#c9bcd1" stroke-width="2" stroke-dasharray="6 6"/>
+  <path d="M330 390 214 216" stroke="#d8b987" stroke-width="2" marker-end="url(#gold-arrow)"/>
+  <path d="M330 390 504 216" stroke="#a4cdca" stroke-width="2.5" marker-end="url(#teal-arrow)"/>
+  <path d="M330 390V219" stroke="#b9abc5" stroke-width="1.5"/>
+  <path d="M210 210h300" stroke="#b9abc5" stroke-opacity=".23" stroke-dasharray="2 5"/>
+  <circle cx="210" cy="210" r="7" fill="#d8b987" stroke="#f0d9b4" stroke-width="2"/>
+  <circle cx="330" cy="210" r="7" fill="#342b48" stroke="#d5c8de" stroke-width="2"/>
+  <circle cx="510" cy="210" r="7" fill="#a4cdca" stroke="#d5eee5" stroke-width="2"/>
+  <g font-family="monospace" font-size="15">
+    <text x="104" y="175" fill="#e4cda5">T (0,4)</text>
+    <text x="104" y="194" font-size="12" fill="#d8b987">dot = -4</text>
+    <text x="353" y="169" fill="#d5c8de" font-size="12">BOUNDARY</text>
+    <text x="353" y="188" fill="#b8a9c6" font-size="11">world x = 2</text>
+    <text x="347" y="235" fill="#d5c8de" font-size="12">T (2,4)</text>
+    <text x="347" y="253" fill="#b8a9c6" font-size="11">dot = 0</text>
+    <text x="533" y="192" fill="#c5e5dc">T (5,4)</text>
+    <text x="533" y="216" font-size="12" fill="#a4cdca">dot = 6</text>
+  </g>
+  <g font-family="monospace" font-size="12">
+    <rect x="167" y="278" width="112" height="26" rx="5" fill="#302b40"/>
+    <text x="223" y="296" text-anchor="middle" fill="#d8b987">d = (-2,3)</text>
+    <rect x="419" y="283" width="103" height="26" rx="5" fill="#293d47"/>
+    <text x="470" y="301" text-anchor="middle" fill="#a4cdca">d = (3,3)</text>
+  </g>
+  <g font-family="monospace" text-anchor="middle" letter-spacing="2">
+    <text x="143" y="353" font-size="17" fill="#d8b987">BACK</text>
+    <text x="626" y="353" font-size="17" fill="#a4cdca">FRONT</text>
+  </g>
+  <path d="M330 390h120" stroke="#ead7b5" stroke-width="4" marker-end="url(#gold-arrow)"/>
+  <text x="390" y="374" text-anchor="middle" font-family="monospace" font-size="13" fill="#ead7b5">f = (2,0)</text>
+  <circle cx="330" cy="390" r="15" fill="#302b43" stroke="#ead7b5" stroke-opacity=".55"/>
+  <circle cx="330" cy="390" r="6" fill="#ead7b5"/>
+  <g fill="#e4d6c4" font-family="monospace" text-anchor="middle">
+    <text x="330" y="428" font-size="14">O (2,1)</text>
+    <text x="330" y="448" font-size="10" fill="#bcb0c5">DISPLACEMENT ORIGIN</text>
+  </g>
+  <text x="400" y="501" text-anchor="middle" font-family="monospace" font-size="15" fill="#e2d3c6">d = target - observer     sign(f · d)</text>
+  <text x="400" y="524" text-anchor="middle" font-family="monospace" font-size="11" fill="#c8bdbe">HALF-PLANE TEST / NOT VISIBILITY OR DISTANCE</text>
+</svg>

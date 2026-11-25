@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 570" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Hard links share an inode; a symlink stores a path</title>
+  <desc id="desc">Names a and b both point directly to inode 42 and its data. Name s points to its own inode 77, whose target path a must be resolved to reach inode 42.</desc>
+  <defs>
+    <linearGradient id="night" x1="40" y1="40" x2="740" y2="530" gradientUnits="userSpaceOnUse"><stop stop-color="#171d32"/><stop offset=".55" stop-color="#34304e"/><stop offset="1" stop-color="#50405e"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#bba177" stop-opacity=".18"/><stop offset="1" stop-color="#bba177" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="38" height="38" patternUnits="userSpaceOnUse"><path d="M38 0H0V38" stroke="#c4c8cc" stroke-opacity=".045"/></pattern>
+  </defs>
+  <path d="M0 0h800v570H0z" fill="url(#night)"/>
+  <path d="M36 36h728v493H36z" fill="url(#grid)"/>
+  <ellipse cx="416" cy="253" rx="310" ry="193" fill="url(#glow)"/>
+  <path d="M36 78V36h42M722 36h42v42M36 487v42h42M722 529h42v-42" stroke="#c9b58f" stroke-opacity=".5"/>
+  <path d="M70 303h660" stroke="#b8a6bd" stroke-opacity=".19"/>
+  <g font-family="monospace" text-anchor="middle">
+    <g fill="#bcb1c3" font-size="18" letter-spacing="3"><text x="140" y="88">HARD</text><text x="140" y="337">SYMLINK</text></g>
+    <g fill="#263548" stroke="#89adb1" stroke-width="2"><rect x="85" y="117" width="100" height="62" rx="10"/><rect x="85" y="217" width="100" height="62" rx="10"/></g>
+    <g fill="#c1d9d6" font-size="31"><text x="135" y="158">a</text><text x="135" y="258">b</text></g>
+    <g stroke="#91b6b7" stroke-width="2"><path d="M187 148h64q36 0 58 40h23m-8-6 8 6-8 6"/><path d="M187 248h64q36 0 58-40h23m-8-6 8 6-8 6"/></g>
+    <rect x="342" y="142" width="132" height="112" rx="16" fill="#776047" fill-opacity=".45" stroke="#d0b483" stroke-width="2"/>
+    <rect x="352" y="152" width="112" height="92" rx="10" stroke="#d0b483" stroke-opacity=".22"/>
+    <text x="408" y="181" fill="#d9c49e" font-size="18">inode</text><text x="408" y="220" fill="#ecdbb7" font-size="34">42</text>
+    <path d="M484 198h113m-8-6 8 6-8 6" stroke="#cbb48b" stroke-width="2"/>
+    <path d="M618 145h61l24 24v82h-85z" fill="#344353" stroke="#97b6b6" stroke-width="1.5"/>
+    <path d="M679 145v24h24M635 191h49M635 208h49M635 225h35" stroke="#a5c3c1" stroke-opacity=".7" stroke-width="2"/>
+    <text x="661" y="278" fill="#b6c8c6" font-size="17">data</text>
+    <rect x="76" y="369" width="86" height="66" rx="10" fill="#263548" stroke="#89adb1" stroke-width="2"/>
+    <text x="119" y="413" fill="#c1d9d6" font-size="31">s</text>
+    <path d="M172 402h39m-8-6 8 6-8 6" stroke="#91b6b7" stroke-width="2"/>
+    <rect x="221" y="354" width="128" height="97" rx="14" fill="#243a4b" stroke="#87afb3" stroke-width="2"/>
+    <text x="285" y="390" fill="#accacc" font-size="18">inode</text><text x="285" y="427" fill="#c1dedc" font-size="31">77</text>
+    <path d="M359 402h43" stroke="#c5b7a4" stroke-width="2" stroke-dasharray="5 6"/><path d="m394 396 8 6-8 6" stroke="#c5b7a4" stroke-width="2"/>
+    <rect x="412" y="369" width="111" height="66" rx="10" fill="#3d354e" stroke="#b8a2b8" stroke-width="1.5" stroke-dasharray="5 5"/>
+    <text x="467" y="412" fill="#d6c4d3" font-size="28">"a"</text><text x="467" y="466" fill="#bba9bd" font-size="17">path</text>
+    <path d="M533 402h64" stroke="#c5b7a4" stroke-width="2" stroke-dasharray="5 6"/><path d="m589 396 8 6-8 6" stroke="#c5b7a4" stroke-width="2"/>
+    <rect x="607" y="354" width="126" height="97" rx="14" fill="#776047" fill-opacity=".45" stroke="#d0b483" stroke-width="2"/>
+    <text x="670" y="390" fill="#d9c49e" font-size="18">inode</text><text x="670" y="427" fill="#ecdbb7" font-size="31">42</text>
+    <path d="M670 344v-40" stroke="#d0b483" stroke-opacity=".3" stroke-dasharray="2 5"/>
+  </g>
+</svg>

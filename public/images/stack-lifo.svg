@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="570" viewBox="0 0 800 570" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">A stack adds and removes at the top</title>
+  <desc id="desc">Three stages show A at the bottom and B above it. Push adds C above B. Peek returns C without removing it. Pop removes C, leaving B as the top. Both entry and exit use the same end.</desc>
+  <defs>
+    <linearGradient id="night" x1="40" y1="40" x2="740" y2="530" gradientUnits="userSpaceOnUse"><stop stop-color="#171d32"/><stop offset=".55" stop-color="#34304e"/><stop offset="1" stop-color="#50405e"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#85acb0" stop-opacity=".16"/><stop offset="1" stop-color="#85acb0" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="38" height="38" patternUnits="userSpaceOnUse"><path d="M38 0H0V38" stroke="#c4c8cc" stroke-opacity=".045"/></pattern>
+    <marker id="gold-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="m1 1 5 3-5 3" stroke="#c5ab7d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="teal-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="m1 1 5 3-5 3" stroke="#85acb0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  </defs>
+  <path d="M0 0h800v570H0z" fill="url(#night)"/>
+  <path d="M36 36h728v493H36z" fill="url(#grid)"/>
+  <ellipse cx="400" cy="302" rx="316" ry="219" fill="url(#glow)"/>
+  <path d="M36 78V36h42M722 36h42v42M36 487v42h42M722 529h42v-42" stroke="#c5ab7d" stroke-opacity=".5"/>
+  <g font-family="monospace" text-anchor="middle">
+    <text x="400" y="78" fill="#d3c2a4" font-size="20" letter-spacing="3">STACK / LIFO</text>
+    <g font-size="19"><text x="170" y="129" fill="#c5ab7d">1. PUSH(C)</text><text x="400" y="129" fill="#c5ab7d">2. PEEK()</text><text x="630" y="129" fill="#85acb0">3. POP()</text></g>
+    <g font-size="14" fill="#bcb1c3"><text x="170" y="153">add at the top</text><text x="400" y="153">return C; keep it</text><text x="630" y="153">return C; remove it</text></g>
+    <g stroke="#a4b5b9" stroke-width="2" stroke-opacity=".6"><path d="M94 264v180h152V264"/><path d="M324 264v180h152V264"/><path d="M554 264v180h152V264"/></g>
+    <g fill="#1e293d" stroke="#85acb0" stroke-width="1.5">
+      <rect x="108" y="386" width="124" height="45" rx="8"/><rect x="108" y="327" width="124" height="45" rx="8"/>
+      <rect x="338" y="386" width="124" height="45" rx="8"/><rect x="338" y="327" width="124" height="45" rx="8"/>
+      <rect x="568" y="386" width="124" height="45" rx="8"/><rect x="568" y="327" width="124" height="45" rx="8" fill="#628c95" fill-opacity=".22"/>
+    </g>
+    <g font-size="28" fill="#b5d4d3"><text x="170" y="419">A</text><text x="170" y="359">B</text><text x="400" y="419">A</text><text x="400" y="359">B</text><text x="630" y="419">A</text><text x="630" y="359">B</text></g>
+    <rect x="108" y="268" width="124" height="45" rx="8" stroke="#c5ab7d" stroke-dasharray="5 6" stroke-opacity=".6"/>
+    <rect x="338" y="268" width="124" height="45" rx="8" fill="#8e7655" fill-opacity=".25" stroke="#c5ab7d" stroke-width="2"/>
+    <rect x="568" y="268" width="124" height="45" rx="8" stroke="#85acb0" stroke-dasharray="5 6" stroke-opacity=".5"/>
+    <rect x="139" y="178" width="62" height="44" rx="8" fill="#8e7655" fill-opacity=".25" stroke="#c5ab7d" stroke-width="2"/>
+    <rect x="599" y="178" width="62" height="44" rx="8" fill="#628c95" fill-opacity=".22" stroke="#85acb0" stroke-width="2"/>
+    <g font-size="28"><text x="170" y="210" fill="#e0c99f">C</text><text x="400" y="300" fill="#e0c99f">C</text><text x="630" y="210" fill="#b5d4d3">C</text></g>
+    <path d="M170 230v29" stroke="#c5ab7d" stroke-width="2" marker-end="url(#gold-arrow)"/>
+    <path d="M630 259v-29" stroke="#85acb0" stroke-width="2" marker-end="url(#teal-arrow)"/>
+    <path d="M400 246v13" stroke="#c5ab7d" stroke-width="1.5"/>
+    <text x="400" y="235" fill="#c5ab7d" font-size="13">TOP</text>
+    <path d="m258 349 17 0m-5-5 5 5-5 5M488 349h17m-5-5 5 5-5 5" stroke="#bcb1c3" stroke-opacity=".6" stroke-width="1.5"/>
+    <g fill="#bcb1c3" font-size="14"><text x="170" y="472">before push: A, B</text><text x="400" y="472">after push: A, B, C</text><text x="630" y="472">after pop: A, B</text></g>
+    <text x="400" y="513" fill="#d3c2a4" font-size="16" letter-spacing="1">ONE END IN / ONE END OUT</text>
+  </g>
+</svg>

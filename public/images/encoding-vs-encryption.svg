@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="570" viewBox="0 0 800 570" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Representation changes versus key-gated encryption</title>
+  <desc id="desc">The upper rail reversibly maps cat to UTF-8 bytes and Base64 Y2F0 without a secret. The lower rail passes through a key-gated encryption stage into ciphertext, then a Base64 wrapper. Decoding the wrapper returns ciphertext, not cat.</desc>
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="800" y2="570" gradientUnits="userSpaceOnUse"><stop stop-color="#171d34"/><stop offset=".55" stop-color="#352d4c"/><stop offset="1" stop-color="#51405d"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" stroke="#d8c5a5" stroke-opacity=".045"/></pattern>
+    <marker id="teal-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="m0 0 8 4-8 4" fill="#a4cdca"/></marker>
+    <marker id="gold-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="m0 0 8 4-8 4" fill="#d8b987"/></marker>
+  </defs>
+  <path d="M0 0h800v570H0z" fill="url(#night)"/>
+  <path d="M0 0h800v570H0z" fill="url(#grid)"/>
+  <g fill="#eadfc9" font-family="monospace">
+    <text x="55" y="67" font-size="13" letter-spacing="3">09 / REPRESENTATION &amp; SECRECY</text>
+    <text x="55" y="103" font-family="Georgia,serif" font-size="27">An alphabet is not a lock.</text>
+  </g>
+  <rect x="55" y="127" width="690" height="152" rx="16" fill="#26323f" fill-opacity=".7" stroke="#a4cdca" stroke-opacity=".35"/>
+  <text x="76" y="153" font-family="monospace" font-size="11" letter-spacing="2" fill="#a4cdca">ENCODING / NO SECRET</text>
+  <g fill="#334851" stroke="#a4cdca" stroke-opacity=".8">
+    <rect x="82" y="176" width="110" height="61" rx="8"/>
+    <rect x="314" y="176" width="172" height="61" rx="8"/>
+    <rect x="608" y="176" width="110" height="61" rx="8"/>
+  </g>
+  <g fill="#c6e4dc" font-family="monospace" font-size="24" text-anchor="middle">
+    <text x="137" y="215">cat</text>
+    <text x="400" y="215" font-size="22">63 61 74</text>
+    <text x="663" y="215">Y2F0</text>
+  </g>
+  <g stroke="#a4cdca" stroke-width="1.7" marker-end="url(#teal-arrow)">
+    <path d="M201 198h104"/><path d="M305 219H201"/>
+    <path d="M495 198h104"/><path d="M599 219H495"/>
+  </g>
+  <g fill="#a4cdca" font-family="monospace" font-size="11" text-anchor="middle">
+    <text x="253" y="184">UTF-8</text><text x="547" y="184">Base64</text>
+    <text x="137" y="259">TEXT</text><text x="400" y="259">BYTES / HEX</text><text x="663" y="259">TEXT</text>
+  </g>
+  <rect x="55" y="303" width="690" height="178" rx="16" fill="#30283e" fill-opacity=".7" stroke="#d8b987" stroke-opacity=".4"/>
+  <text x="76" y="329" font-family="monospace" font-size="11" letter-spacing="2" fill="#d8b987">ENCRYPTION / KEY-GATED</text>
+  <rect x="82" y="366" width="110" height="61" rx="8" fill="#4d3e4b" stroke="#d8b987"/>
+  <text x="137" y="405" text-anchor="middle" font-family="monospace" font-size="24" fill="#ead7b5">cat</text>
+  <text x="137" y="454" text-anchor="middle" font-family="monospace" font-size="11" fill="#d8b987">PLAINTEXT</text>
+  <path d="M202 396h40M330 396h37" stroke="#d8b987" stroke-width="2" marker-end="url(#gold-arrow)"/>
+  <rect x="252" y="361" width="68" height="71" rx="12" fill="#4d3e4b" stroke="#d8b987"/>
+  <path d="M273 391v-9a13 13 0 0 1 26 0v9" stroke="#ead7b5" stroke-width="3"/>
+  <rect x="267" y="390" width="38" height="28" rx="5" fill="#d8b987"/>
+  <circle cx="286" cy="401" r="3" fill="#4d3e4b"/><path d="M286 403v7" stroke="#4d3e4b" stroke-width="2"/>
+  <g stroke="#d8b987" stroke-width="2"><circle cx="274" cy="344" r="5"/><path d="M279 344h20m-6 0v5m6-5v5"/></g>
+  <text x="286" y="454" text-anchor="middle" font-family="monospace" font-size="11" fill="#d8b987">ENCRYPT</text>
+  <rect x="377" y="366" width="110" height="61" rx="8" fill="#282638" stroke="#d8b987"/>
+  <g fill="#d8b987">
+    <path d="M391 381h12v9h-12zM419 381h26v9h-26zM460 381h12v9h-12zM391 400h24v10h-24zM432 400h12v10h-12zM460 400h12v10h-12z"/>
+  </g>
+  <path d="M406 381h8v9h-8zM448 381h8v9h-8zM419 400h9v10h-9zM448 400h8v10h-8z" fill="#b3a0bc"/>
+  <text x="432" y="454" text-anchor="middle" font-family="monospace" font-size="11" fill="#d8b987">CIPHERTEXT</text>
+  <path d="M497 387h81" stroke="#a4cdca" stroke-width="1.7" marker-end="url(#teal-arrow)"/>
+  <path d="M578 410h-81" stroke="#a4cdca" stroke-width="1.7" marker-end="url(#teal-arrow)"/>
+  <text x="538" y="374" text-anchor="middle" font-family="monospace" font-size="10" fill="#a4cdca">wrap</text>
+  <text x="538" y="438" text-anchor="middle" font-family="monospace" font-size="10" fill="#a4cdca">decode</text>
+  <rect x="588" y="366" width="130" height="61" rx="8" fill="#334851" stroke="#a4cdca"/>
+  <g fill="#c6e4dc" font-family="monospace" text-anchor="middle">
+    <text x="653" y="393" font-size="17">Base64</text>
+    <text x="653" y="414" font-size="11">ciphertext</text>
+  </g>
+  <text x="653" y="454" text-anchor="middle" font-family="monospace" font-size="11" fill="#a4cdca">OUTER TEXT</text>
+  <path d="M55 499h690" stroke="#d9c4a1" stroke-opacity=".3"/>
+  <text x="400" y="523" text-anchor="middle" font-family="monospace" font-size="12" fill="#c8bdbe">BASE64 DECODE ≠ DECRYPT</text>
+</svg>

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="570" viewBox="0 0 800 570" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Separately encoded images and captions learn alignment</title>
+  <desc id="desc">An original bicycle drawing and two captions pass through image and text encoders. In a schematic shared space, the bicycle image point sits near its bicycle caption, while the cup caption is farther away. The plot is illustrative rather than a measured embedding projection.</desc>
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="800" y2="570" gradientUnits="userSpaceOnUse"><stop stop-color="#171d34"/><stop offset=".55" stop-color="#352d4c"/><stop offset="1" stop-color="#51405d"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" stroke="#d8c5a5" stroke-opacity=".045"/></pattern>
+    <marker id="teal-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="m0 0 8 4-8 4" fill="#a4cdca"/></marker>
+    <marker id="gold-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="m0 0 8 4-8 4" fill="#d8b987"/></marker>
+  </defs>
+  <path d="M0 0h800v570H0z" fill="url(#night)"/>
+  <path d="M0 0h800v570H0z" fill="url(#grid)"/>
+  <g fill="#eadfc9" font-family="monospace">
+    <text x="55" y="67" font-size="13" letter-spacing="3">11 / LEARNED ALIGNMENT</text>
+    <text x="55" y="103" font-family="Georgia,serif" font-size="27">Different inputs. Related directions.</text>
+  </g>
+  <rect x="65" y="146" width="164" height="122" rx="12" fill="#283944" stroke="#a4cdca" stroke-opacity=".7"/>
+  <text x="80" y="169" font-family="monospace" font-size="10" letter-spacing="2" fill="#a4cdca">IMAGE</text>
+  <g stroke="#91a6ae" stroke-opacity=".3" stroke-width="2">
+    <path d="M82 195h129M82 209h129M87 187v54M112 187v54M137 187v54M162 187v54M187 187v54M208 187v54"/>
+  </g>
+  <path d="M78 250h138" stroke="#a4cdca" stroke-opacity=".25"/>
+  <g stroke="#b9dcd3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="102" cy="229" r="18" fill="#283944"/><circle cx="194" cy="229" r="18" fill="#283944"/>
+    <path d="m102 229 26-31 25 31h-51l26-31h44l-19 31m0 0 10 5m9-36 22 31m-22-31-5-10h13m-64 8h23"/>
+  </g>
+  <circle cx="153" cy="229" r="4" fill="#a4cdca"/>
+  <path d="M230 208h30" stroke="#a4cdca" stroke-width="2" marker-end="url(#teal-arrow)"/>
+  <rect x="268" y="184" width="108" height="50" rx="10" fill="#364c54" stroke="#a4cdca"/>
+  <g font-family="monospace" font-size="12" fill="#c6e4dc" text-anchor="middle">
+    <text x="322" y="205">IMAGE</text><text x="322" y="222">ENCODER</text>
+  </g>
+  <rect x="65" y="310" width="164" height="59" rx="10" fill="#493c49" stroke="#d8b987"/>
+  <g font-family="monospace" font-size="12" fill="#ead7b5">
+    <text x="80" y="335">bicycle</text><text x="80" y="353">by a fence</text>
+  </g>
+  <rect x="65" y="397" width="164" height="54" rx="10" fill="#3b3246" stroke="#d8b987" stroke-opacity=".5"/>
+  <g font-family="monospace" font-size="12" fill="#d2bd9f">
+    <text x="80" y="420">cup</text><text x="80" y="438">on a saucer</text>
+  </g>
+  <path d="M230 340h17v29h13M230 424h17v-55" stroke="#d8b987" stroke-width="1.7"/>
+  <path d="M247 369h14" stroke="#d8b987" stroke-width="1.7" marker-end="url(#gold-arrow)"/>
+  <rect x="268" y="344" width="108" height="50" rx="10" fill="#4d3e4b" stroke="#d8b987"/>
+  <g font-family="monospace" font-size="12" fill="#ead7b5" text-anchor="middle">
+    <text x="322" y="365">TEXT</text><text x="322" y="382">ENCODER</text>
+  </g>
+  <text x="322" y="417" text-anchor="middle" font-family="monospace" font-size="10" fill="#baabbf">each caption</text>
+  <text x="322" y="432" text-anchor="middle" font-family="monospace" font-size="10" fill="#baabbf">separately</text>
+  <rect x="447" y="146" width="290" height="326" rx="14" fill="#24263d" fill-opacity=".8" stroke="#b4a3bb" stroke-opacity=".5"/>
+  <text x="466" y="174" font-family="monospace" font-size="11" letter-spacing="2" fill="#d3c5d4">SHARED SPACE</text>
+  <path d="M474 196v247h239" stroke="#aea0bf" stroke-opacity=".3"/>
+  <path d="M474 228h239M474 299h239M474 370h239M529 196v247M590 196v247M652 196v247" stroke="#aea0bf" stroke-opacity=".08"/>
+  <ellipse cx="584" cy="276" rx="56" ry="48" fill="#a4cdca" fill-opacity=".09" stroke="#a4cdca" stroke-opacity=".3" stroke-dasharray="3 5"/>
+  <path d="M377 208h39v55h130" stroke="#a4cdca" stroke-width="1.8" marker-end="url(#teal-arrow)"/>
+  <path d="M377 369h39l168-73" stroke="#d8b987" stroke-width="1.5" marker-end="url(#gold-arrow)"/>
+  <path d="M416 369 657 403" stroke="#d8b987" stroke-width="1.5" stroke-opacity=".6" stroke-dasharray="4 5" marker-end="url(#gold-arrow)"/>
+  <path d="M558 265 597 285" stroke="#c3d3bd" stroke-width="2"/>
+  <circle cx="558" cy="265" r="9" fill="#a4cdca" stroke="#d4eee5" stroke-width="2"/>
+  <path d="m597 275 10 10-10 10-10-10Z" fill="#d8b987" stroke="#f0dabc" stroke-width="1.5"/>
+  <path d="m674 397 10 10-10 10-10-10Z" fill="#d8b987" fill-opacity=".65" stroke="#d8b987"/>
+  <g font-family="monospace" font-size="11">
+    <text x="539" y="242" fill="#a4cdca">image</text>
+    <text x="584" y="317" fill="#ead7b5">bicycle</text>
+    <text x="685" y="428" fill="#d8b987">cup</text>
+    <text x="490" y="461" fill="#b5a8c2">schematic / not measured</text>
+  </g>
+  <path d="M55 493h690" stroke="#d9c4a1" stroke-opacity=".3"/>
+  <text x="400" y="522" text-anchor="middle" font-family="monospace" font-size="12" fill="#c8bdbe">PAIRED TRAINING / RELATIVE SIMILARITY ≠ TRUTH</text>
+</svg>

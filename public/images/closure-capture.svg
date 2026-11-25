@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 570" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Shared capture versus three separate local variables</title>
+  <desc id="desc">On the left three callbacks converge on the same variable i, whose value is 3 after the loop. On the right each callback points to a separate copy holding 0, 1, or 2.</desc>
+  <defs>
+    <linearGradient id="night" x1="40" y1="40" x2="740" y2="530" gradientUnits="userSpaceOnUse"><stop stop-color="#171d32"/><stop offset=".55" stop-color="#34304e"/><stop offset="1" stop-color="#50405e"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#bba177" stop-opacity=".17"/><stop offset="1" stop-color="#bba177" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="38" height="38" patternUnits="userSpaceOnUse"><path d="M38 0H0V38" stroke="#c4c8cc" stroke-opacity=".045"/></pattern>
+  </defs>
+  <path d="M0 0h800v570H0z" fill="url(#night)"/>
+  <path d="M36 36h728v493H36z" fill="url(#grid)"/>
+  <ellipse cx="305" cy="286" rx="226" ry="201" fill="url(#glow)"/>
+  <path d="M36 78V36h42M722 36h42v42M36 487v42h42M722 529h42v-42" stroke="#c9b58f" stroke-opacity=".5"/>
+  <path d="M402 114v345" stroke="#b8a6bd" stroke-opacity=".23" stroke-dasharray="3 8"/>
+  <g font-family="monospace" text-anchor="middle">
+    <text x="221" y="91" fill="#d5be94" font-size="19" letter-spacing="3">SHARED</text>
+    <text x="585" y="91" fill="#9fcbce" font-size="19" letter-spacing="3">PER ITERATION</text>
+    <g fill="#37324b" stroke="#afa0b7" stroke-width="1.5"><rect x="70" y="158" width="100" height="60" rx="10"/><rect x="70" y="264" width="100" height="60" rx="10"/><rect x="70" y="370" width="100" height="60" rx="10"/></g>
+    <g fill="#d0bed7" font-size="26"><text x="120" y="197">f₀</text><text x="120" y="303">f₁</text><text x="120" y="409">f₂</text></g>
+    <g stroke="#c7ad7f" stroke-width="2"><path d="M180 188h20c30 0 18 89 59 96m-7-8 7 8-9 3"/><path d="M180 294h78m-8-6 8 6-8 6"/><path d="M180 400h20c30 0 18-89 59-96m-7 8 7-8-9-3"/></g>
+    <rect x="270" y="246" width="103" height="96" rx="15" fill="#776047" fill-opacity=".48" stroke="#d0b483" stroke-width="2"/>
+    <text x="321" y="282" fill="#d9c49e" font-size="20">i</text><text x="321" y="321" fill="#ecdbb7" font-size="33">3</text>
+    <g fill="#37324b" stroke="#afa0b7" stroke-width="1.5"><rect x="443" y="158" width="90" height="60" rx="10"/><rect x="443" y="264" width="90" height="60" rx="10"/><rect x="443" y="370" width="90" height="60" rx="10"/></g>
+    <g fill="#d0bed7" font-size="26"><text x="488" y="197">f₀</text><text x="488" y="303">f₁</text><text x="488" y="409">f₂</text></g>
+    <g stroke="#8cb7bb" stroke-width="2"><path d="M543 188h69m-8-6 8 6-8 6"/><path d="M543 294h69m-8-6 8 6-8 6"/><path d="M543 400h69m-8-6 8 6-8 6"/></g>
+    <g fill="#284252" stroke="#8cb7bb" stroke-width="2"><rect x="625" y="158" width="104" height="60" rx="10"/><rect x="625" y="264" width="104" height="60" rx="10"/><rect x="625" y="370" width="104" height="60" rx="10"/></g>
+    <text x="677" y="139" fill="#9fbdc4" font-size="17">copy</text>
+    <g fill="#bddedc" font-size="29"><text x="677" y="199">0</text><text x="677" y="305">1</text><text x="677" y="411">2</text></g>
+    <path d="M84 451h275M453 451h264" stroke="#c1b2bf" stroke-opacity=".2"/>
+    <text x="221" y="488" fill="#dec59a" font-size="26">3, 3, 3</text><text x="585" y="488" fill="#afd3d3" font-size="26">0, 1, 2</text>
+  </g>
+</svg>

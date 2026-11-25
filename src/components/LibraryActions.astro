@@ -1,0 +1,25 @@
+---
+import { getKnowledgeEntries } from '../knowledge-content';
+import { knowledgeEntryPath, knowledgeCatalogPath, knowledgeDirectoryPath } from '../knowledge-paths';
+import type { Locale } from '../i18n/ui';
+interface Props { locale: Locale; currentKey?: string; }
+const { locale, currentKey } = Astro.props;
+const zh = locale === 'zh';
+const cards = (await getKnowledgeEntries(locale)).filter(({ data }) => data.key !== currentKey);
+const urls = cards.map(({ data }) => knowledgeEntryPath(locale, data.key));
+---
+<div class="library-actions">
+  <a href={knowledgeCatalogPath(locale)}>{zh ? '全部卡片' : 'All Cards'}<span aria-hidden="true">↗</span></a>
+  <button type="button" class="random-card" data-card-urls={JSON.stringify(urls)} disabled>{zh ? (currentKey ? '再抽一张' : '随机抽卡') : (currentKey ? 'Draw another' : 'Random Card')}<span aria-hidden="true">⤨</span></button>
+  <a href={knowledgeDirectoryPath(locale)}>{zh ? '知识目录' : 'Directory'}<span aria-hidden="true">☷</span></a>
+</div>
+<noscript><p class="random-help">{zh ? '随机抽卡需要 JavaScript；仍可直接浏览卡片和目录。' : 'Random draws need JavaScript. Cards and the directory remain available.'}</p></noscript>
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.random-card').forEach((button) => {
+    const urls: string[] = JSON.parse(button.dataset.cardUrls!);
+    button.disabled = urls.length === 0;
+    button.addEventListener('click', () => {
+      if (urls.length) window.location.assign(urls[Math.floor(Math.random() * urls.length)]);
+    });
+  });
+</script>

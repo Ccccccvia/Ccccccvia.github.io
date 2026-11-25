@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="570" viewBox="0 0 800 570" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Page translation preserves the offset</title>
+  <desc id="desc">With 4 KiB pages, virtual page 0x12 maps to physical frame 0x2A. The offset 0x345 stays unchanged, giving physical address 0x2A345. The OS defines mappings, the MMU checks permissions, and the TLB caches translations rather than data.</desc>
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="800" y2="570" gradientUnits="userSpaceOnUse"><stop stop-color="#141c30"/><stop offset=".55" stop-color="#2c2947"/><stop offset="1" stop-color="#4b3857"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" stroke="#d7d3de" stroke-opacity=".04"/></pattern>
+    <marker id="gold-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="m1 1 7 4-7 4" stroke="#c5ab7d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="teal-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="m1 1 7 4-7 4" stroke="#85acb0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  </defs>
+  <path d="M0 0h800v570H0z" fill="url(#night)"/>
+  <path d="M32 32h736v506H32z" fill="url(#grid)"/>
+  <path d="M32 76V32h44M724 32h44v44M32 494v44h44M724 538h44v-44" stroke="#c5ab7d" stroke-opacity=".35"/>
+  <g font-family="system-ui, sans-serif">
+    <text x="66" y="75" fill="#ded8e3" font-size="21" letter-spacing="2">PAGE TRANSLATION</text>
+    <text x="734" y="75" fill="#85acb0" font-size="17" text-anchor="end">4 KiB pages</text>
+    <rect x="66" y="117" width="668" height="85" rx="13" fill="#192236" stroke="#c5ab7d" stroke-width="1.6"/>
+    <path d="M498 118v83" stroke="#85acb0" stroke-width="1.6"/>
+    <text x="90" y="145" fill="#c5ab7d" font-size="14" letter-spacing="1">VIRTUAL PAGE</text>
+    <text x="522" y="145" fill="#85acb0" font-size="14" letter-spacing="1">OFFSET</text>
+    <g font-family="monospace" font-size="28"><text x="90" y="184" fill="#ead8b7">0x12</text><text x="522" y="184" fill="#b7d4d5">0x345</text></g>
+    <path d="M282 203v52" stroke="#c5ab7d" stroke-width="2" marker-end="url(#gold-arrow)"/>
+    <text x="66" y="238" fill="#c6becd" font-size="14">OS sets mapping</text>
+    <rect x="122" y="265" width="326" height="75" rx="13" fill="#c5ab7d" fill-opacity=".08" stroke="#c5ab7d" stroke-width="1.5"/>
+    <text x="285" y="292" fill="#d3c2a4" font-size="16" text-anchor="middle">MMU · permission check</text>
+    <text x="285" y="321" fill="#ead8b7" font-family="monospace" font-size="24" text-anchor="middle">0x12 → 0x2A</text>
+    <path d="M282 341v40" stroke="#c5ab7d" stroke-width="2" marker-end="url(#gold-arrow)"/>
+    <path d="M616 203v178" stroke="#85acb0" stroke-width="2" stroke-dasharray="6 7" marker-end="url(#teal-arrow)"/>
+    <rect x="548" y="279" width="136" height="43" rx="21" fill="#283249" stroke="#85acb0" stroke-opacity=".5"/>
+    <text x="616" y="306" fill="#b7d4d5" font-size="16" text-anchor="middle">unchanged</text>
+    <rect x="66" y="391" width="668" height="85" rx="13" fill="#192236" stroke="#85acb0" stroke-width="1.6"/>
+    <path d="M498 392v83" stroke="#85acb0" stroke-width="1.6"/>
+    <text x="90" y="419" fill="#c5ab7d" font-size="14" letter-spacing="1">PHYSICAL FRAME</text>
+    <text x="522" y="419" fill="#85acb0" font-size="14" letter-spacing="1">OFFSET</text>
+    <g font-family="monospace" font-size="28"><text x="90" y="458" fill="#ead8b7">0x2A</text><text x="522" y="458" fill="#b7d4d5">0x345</text></g>
+    <text x="400" y="520" fill="#c6becd" font-size="17" text-anchor="middle">TLB caches translation, not data</text>
+  </g>
+</svg>

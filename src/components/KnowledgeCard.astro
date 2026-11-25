@@ -1,15 +1,18 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { topics, topicGroupFor } from '../knowledge';
+import { knowledgeEntryPath } from '../knowledge-paths';
 interface Props { entry: CollectionEntry<'knowledge'>; linked?: boolean; }
 const { entry, linked = true } = Astro.props;
-const { locale, key, title, subtitle, summary, cardId, collection, cardArt, facts } = entry.data;
+const { locale, key, title, subtitle, summary, cardId, topic, cardArt, facts } = entry.data;
+const group = topicGroupFor(topic);
 const Tag = linked ? 'a' : 'div';
 ---
-<Tag class:list={['knowledge-card', { 'knowledge-card-link': linked }]} href={linked ? `/${locale}/knowledge/${key}/` : undefined}>
+<Tag class:list={['knowledge-card', { 'knowledge-card-link': linked }]} href={linked ? knowledgeEntryPath(locale, key) : undefined}>
   <div class="card-rim">
     <div class="card-title"><span>{title}</span><span class="card-sigil" aria-hidden="true">◇</span></div>
-    <div class="card-art"><img src={cardArt} alt="" width="800" height="570" /></div>
-    <div class="card-type"><span>{collection}</span><span lang="en">CONCEPT</span></div>
+    <div class="card-art"><img src={cardArt} alt="" width="800" height="570" loading={linked ? 'lazy' : 'eager'} /></div>
+    <div class="card-type"><span class="card-classification"><span class="card-group">{group[locale]}</span><span class="card-topic">{topics[topic][locale]}</span></span><span lang="en">CONCEPT</span></div>
     <div class="card-rules">
       <p class="card-subtitle">{subtitle}</p>
       <div class="card-equations">{facts.map((fact) => <span>{fact.label} <b>{fact.value}</b></span>)}</div>

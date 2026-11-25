@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 570" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Binary search narrows six ordered cells to three</title>
+  <desc id="desc">For target 16, index 2 holds 8, so indices 0 through 2 are excluded. The surviving interval contains 12, 16, and 23; index 4 is the match.</desc>
+  <defs>
+    <linearGradient id="night" x1="40" y1="40" x2="740" y2="530" gradientUnits="userSpaceOnUse"><stop stop-color="#171d32"/><stop offset=".55" stop-color="#34304e"/><stop offset="1" stop-color="#50405e"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#bba177" stop-opacity=".19"/><stop offset="1" stop-color="#bba177" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="38" height="38" patternUnits="userSpaceOnUse"><path d="M38 0H0V38" stroke="#c4c8cc" stroke-opacity=".045"/></pattern>
+  </defs>
+  <path d="M0 0h800v570H0z" fill="url(#night)"/>
+  <path d="M36 36h728v493H36z" fill="url(#grid)"/>
+  <ellipse cx="510" cy="318" rx="235" ry="198" fill="url(#glow)"/>
+  <path d="M36 78V36h42M722 36h42v42M36 487v42h42M722 529h42v-42" stroke="#c9b58f" stroke-opacity=".5"/>
+  <g fill="#d3c2a4" opacity=".5"><circle cx="72" cy="310" r="2"/><circle cx="718" cy="96" r="2"/><circle cx="685" cy="495" r="1.5"/></g>
+  <g font-family="monospace" text-anchor="middle">
+    <text x="140" y="89" fill="#d9c49e" font-size="18" letter-spacing="2">TARGET 16</text>
+    <text x="345" y="101" fill="#d9c49e" font-size="19">mid = 2</text>
+    <path d="M345 111v30m-6-7 6 7 6-7" stroke="#d9c49e" stroke-width="2"/>
+    <g fill="#a9bbc0" font-size="16"><text x="133" y="145">0</text><text x="239" y="145">1</text><text x="451" y="145">3</text><text x="557" y="145">4</text><text x="663" y="145">5</text></g>
+    <g fill="#223448" stroke="#7aa2a8" stroke-width="1.5"><rect x="88" y="158" width="90" height="72" rx="10"/><rect x="194" y="158" width="90" height="72" rx="10"/><rect x="406" y="158" width="90" height="72" rx="10"/><rect x="512" y="158" width="90" height="72" rx="10"/><rect x="618" y="158" width="90" height="72" rx="10"/></g>
+    <rect x="300" y="158" width="90" height="72" rx="10" fill="#625343" stroke="#d4b782" stroke-width="2"/>
+    <g fill="#c3d9d8" font-size="31"><text x="133" y="205">2</text><text x="239" y="205">5</text><text x="451" y="205">12</text><text x="557" y="205">16</text><text x="663" y="205">23</text></g>
+    <text x="345" y="205" fill="#ecd7ac" font-size="31">8</text>
+    <path d="M88 245v10h302v-10" stroke="#958797" stroke-width="1.5"/>
+    <text x="239" y="289" fill="#b3a5b4" font-size="20">8 &lt; 16</text>
+    <g stroke="#85aaaf" stroke-width="1.5" opacity=".6"><path d="M451 242v84m-5-7 5 7 5-7"/><path d="M663 242v84m-5-7 5 7 5-7"/></g>
+    <path d="M557 242v31" stroke="#d4b782" stroke-width="2"/>
+    <text x="557" y="306" fill="#d9c49e" font-size="19">mid = 4</text>
+    <path d="M557 316v15m-5-7 5 7 5-7" stroke="#d4b782" stroke-width="2"/>
+    <rect x="397" y="334" width="320" height="90" rx="15" fill="#84aeb0" fill-opacity=".07" stroke="#84aeb0" stroke-opacity=".3"/>
+    <g stroke="#948399" stroke-dasharray="3 7" opacity=".35"><rect x="88" y="343" width="90" height="72" rx="10"/><rect x="194" y="343" width="90" height="72" rx="10"/><rect x="300" y="343" width="90" height="72" rx="10"/></g>
+    <g stroke="#a092a4" stroke-width="2" opacity=".4"><path d="m114 361 38 36m0-36-38 36"/><path d="m220 361 38 36m0-36-38 36"/><path d="m326 361 38 36m0-36-38 36"/></g>
+    <g fill="#233749" stroke="#86afb3" stroke-width="1.5"><rect x="406" y="343" width="90" height="72" rx="10"/><rect x="618" y="343" width="90" height="72" rx="10"/></g>
+    <rect x="512" y="343" width="90" height="72" rx="10" fill="#b79b68" stroke="#eddbb2" stroke-width="2"/>
+    <g fill="#c3d9d8" font-size="31"><text x="451" y="390">12</text><text x="663" y="390">23</text></g>
+    <text x="557" y="390" fill="#25263a" font-size="31" font-weight="bold">16</text>
+    <path d="M557 428v26m-6-7 6 7 6-7" stroke="#d9c49e" stroke-width="2"/>
+    <text x="557" y="484" fill="#e5d2ac" font-size="22">index 4</text>
+    <text x="239" y="483" fill="#a495aa" font-size="17" letter-spacing="2">EXCLUDED</text>
+  </g>
+</svg>

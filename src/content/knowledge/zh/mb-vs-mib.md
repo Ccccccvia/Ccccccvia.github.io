@@ -5,7 +5,7 @@ cardId: K-001
 title: 'MB 与 MiB'
 subtitle: '同一个文件，两把不同刻度的尺。'
 summary: 'MB 按一百万字节计量，MiB 按 1,048,576 字节计量。换一把尺，容量数字会变，文件数据不会变。'
-collection: '数据与计量'
+topic: 'organization'
 cardArt: '/images/binary-observatory.svg'
 facts:
   - { label: '1 MB', value: '10⁶ B' }

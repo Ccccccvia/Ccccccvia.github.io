@@ -1,0 +1,605 @@
+
+> knowledgeos-web@0.1.0 test
+> npm run test:content && npm run test:examples && npm run build && npm run test:ui
+
+
+> knowledgeos-web@0.1.0 test:content
+> node --test tests/content.test.mjs tests/paths.test.mjs
+
+✔ all current articles satisfy the shared schema and collection rules (13.0934ms)
+✔ Astro IDs use locale/key even when translations have the same legacy slug (3.3741ms)
+✔ duplicate localized keys are rejected (15.2009ms)
+✔ different concepts cannot reuse a card ID in one locale (7.0341ms)
+✔ page route directory cannot be a card key (9.1817ms)
+✔ page route sets cannot be a card key (8.2293ms)
+✔ missing translation is rejected (6.6333ms)
+✔ translation card IDs must agree (6.9296ms)
+✔ translation topics must agree (6.5274ms)
+✔ translation language sets must agree (6.9253ms)
+✔ duplicate language labels are rejected (7.1194ms)
+✔ JavaScript fences cannot lose their language label (6.687ms)
+✔ SQL fences cannot lose their language label (6.7438ms)
+✔ unknown topic is rejected by the same schema Astro uses (7.1546ms)
+✔ unknown language is rejected (6.7626ms)
+✔ unknown locale is rejected (6.145ms)
+✔ invalid URL key is rejected (7.1529ms)
+✔ missing card art is rejected (6.4397ms)
+✔ card art cannot traverse outside public (6.959ms)
+✔ language ordering does not create a false bilingual mismatch (1.3898ms)
+✔ articles without code can omit language labels (0.9543ms)
+✔ translated text, dates and preview labels remain independent (0.8019ms)
+✔ featured pool of 0 respects the limit without duplicates or source mutation (0.2741ms)
+✔ featured pool of 1 respects the limit without duplicates or source mutation (0.2742ms)
+✔ featured pool of 6 respects the limit without duplicates or source mutation (0.15ms)
+✔ featured pool of 7 respects the limit without duplicates or source mutation (0.1188ms)
+✔ featured pool of 8 respects the limit without duplicates or source mutation (0.07ms)
+✔ featured pool of 21 respects the limit without duplicates or source mutation (0.0662ms)
+✔ every localized article can be selected, including members beyond the fallback (0.2687ms)
+✔ featured selection draws again instead of caching its previous result (0.1794ms)
+✔ zh: detail paths match source identities (62.169ms)
+✔ zh: catalog and directory keep their public routes (0.2803ms)
+✔ zh: filters encode values without creating extra parameters or fragments (0.9756ms)
+✔ zh: independent path calls do not retain earlier filters (0.1896ms)
+✔ en: detail paths match source identities (34.3817ms)
+✔ en: catalog and directory keep their public routes (0.2074ms)
+✔ en: filters encode values without creating extra parameters or fragments (0.2876ms)
+✔ en: independent path calls do not retain earlier filters (0.1358ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 566.617
+
+> knowledgeos-web@0.1.0 test:examples
+> node scripts/check-examples.mjs
+
+PASS: bilingual code equality; 60 binary-search edge cases; floating-point outputs; URL corrections; C# source equality; HTTP body length; encapsulation byte table; 9331 exhaustive bracket strings plus boundary cases; numeric sorted copy.
+
+> knowledgeos-web@0.1.0 build
+> npm run check && astro build
+
+
+> knowledgeos-web@0.1.0 check
+> npm run check:content && astro check
+
+
+> knowledgeos-web@0.1.0 check:content
+> node scripts/check-content.mjs
+
+Content check passed: 42 articles, 21 concepts.
+[2m23:44:05[22m [34m[content][39m Syncing content
+[2m23:44:05[22m [34m[content][39m Synced content
+[2m23:44:05[22m [34m[types][39m Generated [2m1.09s[22m
+[2m23:44:05[22m [34m[check][39m Getting diagnostics for Astro files in E:\Ccccccvia.github.io...
+Result (32 files): 
+- 0 errors
+- 0 warnings
+- 0 hints
+
+[2m23:44:13[22m [34m[content][39m Syncing content
+[2m23:44:13[22m [34m[content][39m Synced content
+[2m23:44:13[22m [34m[types][39m Generated [2m599ms[22m
+[2m23:44:13[22m [34m[build][39m output: [34m"static"[39m
+[2m23:44:13[22m [34m[build][39m mode: [34m"static"[39m
+[2m23:44:13[22m [34m[build][39m directory: [34mE:\Ccccccvia.github.io\dist\[39m
+[2m23:44:13[22m [34m[build][39m Collecting build info...
+[2m23:44:13[22m [34m[build][39m [32m✓ Completed in 645ms.[39m
+[2m23:44:13[22m [34m[build][39m Building static entrypoints...
+[2m23:44:13[22m [34m[vite][39m [32m✓ built in 415ms[39m
+[2m23:44:13[22m [34m[vite][39m [32m✓ built in 81ms[39m
+[2m23:44:13[22m [34m[build][39m Rearranging server assets...
+
+[42m[30m generating static routes [39m[49m
+[2m23:44:14[22m   [34m├─[39m [2m/404.html[22m [2m(+15ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/about/index.html[22m [2m(+6ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/about/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/directory/index.html[22m [2m(+7ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/directory/index.html[22m [2m(+6ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/sets/index.html[22m [2m(+9ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/sets/index.html[22m [2m(+6ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/mb-vs-mib/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/mb-vs-mib/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/binary-search/index.html[22m [2m(+5ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/binary-search/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/tcp-message-boundaries/index.html[22m [2m(+3ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/tcp-message-boundaries/index.html[22m [2m(+3ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/hard-links-and-symlinks/index.html[22m [2m(+5ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/hard-links-and-symlinks/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/floating-point-rounding/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/floating-point-rounding/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/closure-capture/index.html[22m [2m(+3ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/closure-capture/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/n-plus-one-queries/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/n-plus-one-queries/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/url-query-and-fragment/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/url-query-and-fragment/index.html[22m [2m(+3ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/encoding-vs-encryption/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/encoding-vs-encryption/index.html[22m [2m(+3ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/dot-product-direction/index.html[22m [2m(+3ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/dot-product-direction/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/multimodal-alignment/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/multimodal-alignment/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/stack-lifo/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/stack-lifo/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/ordered-vs-sorted/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/ordered-vs-sorted/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/dynamic-array-capacity/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/dynamic-array-capacity/index.html[22m [2m(+3ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/virtual-address-translation/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/virtual-address-translation/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/page-fault-vs-segfault/index.html[22m [2m(+5ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/page-fault-vs-segfault/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/hardware-interrupts/index.html[22m [2m(+3ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/hardware-interrupts/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/handles-and-resources/index.html[22m [2m(+3ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/handles-and-resources/index.html[22m [2m(+3ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/threads-and-shared-memory/index.html[22m [2m(+3ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/threads-and-shared-memory/index.html[22m [2m(+3ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/http-vs-html/index.html[22m [2m(+3ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/http-vs-html/index.html[22m [2m(+4ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/network-encapsulation/index.html[22m [2m(+3ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/network-encapsulation/index.html[22m [2m(+3ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/knowledge/index.html[22m [2m(+6ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/knowledge/index.html[22m [2m(+5ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/projects/index.html[22m [2m(+3ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/projects/index.html[22m [2m(+3ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/zh/index.html[22m [2m(+5ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/en/index.html[22m [2m(+5ms)[22m 
+[2m23:44:14[22m   [34m├─[39m [2m/index.html[22m [2m(+5ms)[22m 
+[2m23:44:14[22m [32m✓ Completed in 342ms.
+[39m
+[2m23:44:14[22m [34m[build][39m [32m✓ Completed in 918ms.[39m
+[2m23:44:14[22m [34m[build][39m 56 page(s) built in [1m1.67s[22m
+[2m23:44:14[22m [34m[build][39m [1mComplete![22m
+
+> knowledgeos-web@0.1.0 test:ui
+> node tests/ui.test.mjs
+
+Testing http://127.0.0.1:59611; screenshots and isolated profile: E:\knowledgeos-browser-qa\maintained-S7m1a0
+PASS zh: featured members are unique, valid and capped by the shared limit
+PASS zh: random pool matches all source articles including preview
+PASS zh: random featured content agrees with its source
+PASS zh: featured sampling uses browser randomness on page load
+PASS zh: refresh samples the full pool without rebuilding
+PASS zh: featured members are unique, valid and capped by the shared limit
+PASS zh: random pool matches all source articles including preview
+PASS zh: random featured content agrees with its source
+PASS zh: featured sampling uses browser randomness on page load
+PASS zh: refresh samples the full pool without rebuilding
+PASS zh: hover lifts the card and pointer updates the sky
+PASS zh: random opens a real detail and excludes itself
+PASS zh: another draw changes the current card
+PASS zh: catalog exactly matches source articles
+PASS zh: topic dropdown matches the registry
+PASS zh: language options match the registry
+PASS zh: card classification matches source metadata
+PASS zh: topic organization matches source members
+PASS zh: topic architecture matches source members
+PASS zh: topic operating-systems matches source members
+PASS zh: topic networks matches source members
+PASS zh: topic web matches source members
+PASS zh: topic security matches source members
+PASS zh: topic programming matches source members
+PASS zh: topic algorithms matches source members
+PASS zh: topic databases matches source members
+PASS zh: topic mathematics matches source members
+PASS zh: topic ai matches source members
+PASS zh: language C# matches source members
+PASS zh: organization AND C# matches source intersection
+PASS zh: architecture AND C# matches source intersection
+PASS zh: operating-systems AND C# matches source intersection
+PASS zh: networks AND C# matches source intersection
+PASS zh: web AND C# matches source intersection
+PASS zh: security AND C# matches source intersection
+PASS zh: programming AND C# matches source intersection
+PASS zh: algorithms AND C# matches source intersection
+PASS zh: databases AND C# matches source intersection
+PASS zh: mathematics AND C# matches source intersection
+PASS zh: ai AND C# matches source intersection
+PASS zh: language JavaScript matches source members
+PASS zh: organization AND JavaScript matches source intersection
+PASS zh: architecture AND JavaScript matches source intersection
+PASS zh: operating-systems AND JavaScript matches source intersection
+PASS zh: networks AND JavaScript matches source intersection
+PASS zh: web AND JavaScript matches source intersection
+PASS zh: security AND JavaScript matches source intersection
+PASS zh: programming AND JavaScript matches source intersection
+PASS zh: algorithms AND JavaScript matches source intersection
+PASS zh: databases AND JavaScript matches source intersection
+PASS zh: mathematics AND JavaScript matches source intersection
+PASS zh: ai AND JavaScript matches source intersection
+PASS zh: language SQL matches source members
+PASS zh: organization AND SQL matches source intersection
+PASS zh: architecture AND SQL matches source intersection
+PASS zh: operating-systems AND SQL matches source intersection
+PASS zh: networks AND SQL matches source intersection
+PASS zh: web AND SQL matches source intersection
+PASS zh: security AND SQL matches source intersection
+PASS zh: programming AND SQL matches source intersection
+PASS zh: algorithms AND SQL matches source intersection
+PASS zh: databases AND SQL matches source intersection
+PASS zh: mathematics AND SQL matches source intersection
+PASS zh: ai AND SQL matches source intersection
+PASS native reset restores source members and clears URL
+PASS zh: search K-002 matches source fields
+PASS zh: search 计算机系统 matches source fields
+PASS zh: empty result is visible and announced
+PASS native reset restores source members and clears URL
+PASS zh: locale switch preserves filters and translated members
+PASS zh: directory lists each source article once
+PASS zh: directory labels, counts and members match content
+PASS zh: language cross-reference counts match content
+PASS zh: parent anchor works
+PASS zh: binary-search detail agrees with its article
+PASS zh: binary-search code, artwork, contents and translation render correctly
+PASS zh: binary-search native language switch keeps the same concept
+PASS zh: binary-search language link selects the right source members
+PASS zh: closure-capture detail agrees with its article
+PASS zh: closure-capture code, artwork, contents and translation render correctly
+PASS zh: closure-capture native language switch keeps the same concept
+PASS zh: closure-capture language link selects the right source members
+PASS zh: dot-product-direction detail agrees with its article
+PASS zh: dot-product-direction code, artwork, contents and translation render correctly
+PASS zh: dot-product-direction native language switch keeps the same concept
+PASS zh: dot-product-direction language link selects the right source members
+PASS zh: dynamic-array-capacity detail agrees with its article
+PASS zh: dynamic-array-capacity code, artwork, contents and translation render correctly
+PASS zh: dynamic-array-capacity native language switch keeps the same concept
+PASS zh: encoding-vs-encryption detail agrees with its article
+PASS zh: encoding-vs-encryption code, artwork, contents and translation render correctly
+PASS zh: encoding-vs-encryption native language switch keeps the same concept
+PASS zh: encoding-vs-encryption language link selects the right source members
+PASS zh: floating-point-rounding detail agrees with its article
+PASS zh: floating-point-rounding code, artwork, contents and translation render correctly
+PASS zh: floating-point-rounding native language switch keeps the same concept
+PASS zh: floating-point-rounding language link selects the right source members
+PASS zh: handles-and-resources detail agrees with its article
+PASS zh: handles-and-resources code, artwork, contents and translation render correctly
+PASS zh: handles-and-resources native language switch keeps the same concept
+PASS zh: hard-links-and-symlinks detail agrees with its article
+PASS zh: hard-links-and-symlinks code, artwork, contents and translation render correctly
+PASS zh: hard-links-and-symlinks native language switch keeps the same concept
+PASS zh: hardware-interrupts detail agrees with its article
+PASS zh: hardware-interrupts code, artwork, contents and translation render correctly
+PASS zh: hardware-interrupts native language switch keeps the same concept
+PASS zh: http-vs-html detail agrees with its article
+PASS zh: http-vs-html code, artwork, contents and translation render correctly
+PASS zh: http-vs-html native language switch keeps the same concept
+PASS zh: mb-vs-mib detail agrees with its article
+PASS zh: mb-vs-mib code, artwork, contents and translation render correctly
+PASS zh: mb-vs-mib native language switch keeps the same concept
+PASS zh: multimodal-alignment detail agrees with its article
+PASS zh: multimodal-alignment code, artwork, contents and translation render correctly
+PASS zh: multimodal-alignment native language switch keeps the same concept
+PASS zh: n-plus-one-queries detail agrees with its article
+PASS zh: n-plus-one-queries code, artwork, contents and translation render correctly
+PASS zh: n-plus-one-queries native language switch keeps the same concept
+PASS zh: n-plus-one-queries language link selects the right source members
+PASS zh: network-encapsulation detail agrees with its article
+PASS zh: network-encapsulation code, artwork, contents and translation render correctly
+PASS zh: network-encapsulation native language switch keeps the same concept
+PASS zh: ordered-vs-sorted detail agrees with its article
+PASS zh: ordered-vs-sorted code, artwork, contents and translation render correctly
+PASS zh: ordered-vs-sorted native language switch keeps the same concept
+PASS zh: ordered-vs-sorted language link selects the right source members
+PASS zh: page-fault-vs-segfault detail agrees with its article
+PASS zh: page-fault-vs-segfault code, artwork, contents and translation render correctly
+PASS zh: page-fault-vs-segfault native language switch keeps the same concept
+PASS zh: stack-lifo detail agrees with its article
+PASS zh: stack-lifo code, artwork, contents and translation render correctly
+PASS zh: stack-lifo native language switch keeps the same concept
+PASS zh: stack-lifo language link selects the right source members
+PASS zh: tcp-message-boundaries detail agrees with its article
+PASS zh: tcp-message-boundaries code, artwork, contents and translation render correctly
+PASS zh: tcp-message-boundaries native language switch keeps the same concept
+PASS zh: threads-and-shared-memory detail agrees with its article
+PASS zh: threads-and-shared-memory code, artwork, contents and translation render correctly
+PASS zh: threads-and-shared-memory native language switch keeps the same concept
+PASS zh: url-query-and-fragment detail agrees with its article
+PASS zh: url-query-and-fragment code, artwork, contents and translation render correctly
+PASS zh: url-query-and-fragment native language switch keeps the same concept
+PASS zh: virtual-address-translation detail agrees with its article
+PASS zh: virtual-address-translation code, artwork, contents and translation render correctly
+PASS zh: virtual-address-translation native language switch keeps the same concept
+PASS zh: landing search reaches matching catalog content
+PASS zh: 390px page fits /zh/knowledge/sets/
+PASS zh: 390px page fits /zh/knowledge/directory/
+PASS zh: 390px directory navigation precedes its tree
+PASS zh: 390px page fits /zh/knowledge/binary-search/
+PASS zh: 390px page fits /zh/knowledge/closure-capture/
+PASS zh: 390px page fits /zh/knowledge/dot-product-direction/
+PASS zh: 390px page fits /zh/knowledge/dynamic-array-capacity/
+PASS zh: 390px page fits /zh/knowledge/encoding-vs-encryption/
+PASS zh: 390px page fits /zh/knowledge/floating-point-rounding/
+PASS zh: 390px page fits /zh/knowledge/handles-and-resources/
+PASS zh: 390px page fits /zh/knowledge/hard-links-and-symlinks/
+PASS zh: 390px page fits /zh/knowledge/hardware-interrupts/
+PASS zh: 390px page fits /zh/knowledge/http-vs-html/
+PASS zh: 390px page fits /zh/knowledge/mb-vs-mib/
+PASS zh: 390px page fits /zh/knowledge/multimodal-alignment/
+PASS zh: 390px page fits /zh/knowledge/n-plus-one-queries/
+PASS zh: 390px page fits /zh/knowledge/network-encapsulation/
+PASS zh: 390px page fits /zh/knowledge/ordered-vs-sorted/
+PASS zh: 390px page fits /zh/knowledge/page-fault-vs-segfault/
+PASS zh: 390px page fits /zh/knowledge/stack-lifo/
+PASS zh: 390px page fits /zh/knowledge/tcp-message-boundaries/
+PASS zh: 390px page fits /zh/knowledge/threads-and-shared-memory/
+PASS zh: 390px page fits /zh/knowledge/url-query-and-fragment/
+PASS zh: 390px page fits /zh/knowledge/virtual-address-translation/
+PASS zh: 320px page fits /zh/knowledge/sets/
+PASS zh: 320px page fits /zh/knowledge/directory/
+PASS zh: 320px directory navigation precedes its tree
+PASS zh: 320px page fits /zh/knowledge/binary-search/
+PASS zh: 320px page fits /zh/knowledge/closure-capture/
+PASS zh: 320px page fits /zh/knowledge/dot-product-direction/
+PASS zh: 320px page fits /zh/knowledge/dynamic-array-capacity/
+PASS zh: 320px page fits /zh/knowledge/encoding-vs-encryption/
+PASS zh: 320px page fits /zh/knowledge/floating-point-rounding/
+PASS zh: 320px page fits /zh/knowledge/handles-and-resources/
+PASS zh: 320px page fits /zh/knowledge/hard-links-and-symlinks/
+PASS zh: 320px page fits /zh/knowledge/hardware-interrupts/
+PASS zh: 320px page fits /zh/knowledge/http-vs-html/
+PASS zh: 320px page fits /zh/knowledge/mb-vs-mib/
+PASS zh: 320px page fits /zh/knowledge/multimodal-alignment/
+PASS zh: 320px page fits /zh/knowledge/n-plus-one-queries/
+PASS zh: 320px page fits /zh/knowledge/network-encapsulation/
+PASS zh: 320px page fits /zh/knowledge/ordered-vs-sorted/
+PASS zh: 320px page fits /zh/knowledge/page-fault-vs-segfault/
+PASS zh: 320px page fits /zh/knowledge/stack-lifo/
+PASS zh: 320px page fits /zh/knowledge/tcp-message-boundaries/
+PASS zh: 320px page fits /zh/knowledge/threads-and-shared-memory/
+PASS zh: 320px page fits /zh/knowledge/url-query-and-fragment/
+PASS zh: 320px page fits /zh/knowledge/virtual-address-translation/
+PASS zh: mobile homepage has no horizontal overflow
+PASS zh: last mobile featured member is reachable
+PASS zh: reduced motion disables scene animation and card transitions
+PASS zh: existing gallery styles survive cleanup
+PASS zh: about and header navigation still render
+PASS zh: no-JavaScript catalog retains all source cards
+PASS zh: no-JavaScript /zh/ retains the fixed, capped source slice
+PASS zh: no-JavaScript /zh/ cards are visible and readable with source text
+PASS zh: no-JavaScript /zh/ keeps all candidates inert without extra visible cards
+PASS zh: no-JavaScript /zh/ native card click opens the correct source detail
+PASS zh: no-JavaScript /zh/knowledge/ retains the fixed, capped source slice
+PASS zh: no-JavaScript /zh/knowledge/ cards are visible and readable with source text
+PASS zh: no-JavaScript /zh/knowledge/ keeps all candidates inert without extra visible cards
+PASS zh: no-JavaScript /zh/knowledge/ native card click opens the correct source detail
+PASS zh: /zh/ receives a policy blocking inline and external scripts
+PASS zh: blocked-script-policy /zh/ retains the fixed, capped source slice
+PASS zh: blocked-script-policy /zh/ cards are visible and readable with source text
+PASS zh: blocked-script-policy /zh/ keeps all candidates inert without extra visible cards
+PASS zh: blocked-script-policy /zh/ native card click opens the correct source detail
+PASS zh: /zh/knowledge/ receives a policy blocking inline and external scripts
+PASS zh: blocked-script-policy /zh/knowledge/ retains the fixed, capped source slice
+PASS zh: blocked-script-policy /zh/knowledge/ cards are visible and readable with source text
+PASS zh: blocked-script-policy /zh/knowledge/ keeps all candidates inert without extra visible cards
+PASS zh: blocked-script-policy /zh/knowledge/ native card click opens the correct source detail
+PASS en: featured members are unique, valid and capped by the shared limit
+PASS en: random pool matches all source articles including preview
+PASS en: random featured content agrees with its source
+PASS en: featured sampling uses browser randomness on page load
+PASS en: refresh samples the full pool without rebuilding
+PASS en: featured members are unique, valid and capped by the shared limit
+PASS en: random pool matches all source articles including preview
+PASS en: random featured content agrees with its source
+PASS en: featured sampling uses browser randomness on page load
+PASS en: refresh samples the full pool without rebuilding
+PASS en: hover lifts the card and pointer updates the sky
+PASS en: random opens a real detail and excludes itself
+PASS en: another draw changes the current card
+PASS en: catalog exactly matches source articles
+PASS en: topic dropdown matches the registry
+PASS en: language options match the registry
+PASS en: card classification matches source metadata
+PASS en: topic organization matches source members
+PASS en: topic architecture matches source members
+PASS en: topic operating-systems matches source members
+PASS en: topic networks matches source members
+PASS en: topic web matches source members
+PASS en: topic security matches source members
+PASS en: topic programming matches source members
+PASS en: topic algorithms matches source members
+PASS en: topic databases matches source members
+PASS en: topic mathematics matches source members
+PASS en: topic ai matches source members
+PASS en: language C# matches source members
+PASS en: organization AND C# matches source intersection
+PASS en: architecture AND C# matches source intersection
+PASS en: operating-systems AND C# matches source intersection
+PASS en: networks AND C# matches source intersection
+PASS en: web AND C# matches source intersection
+PASS en: security AND C# matches source intersection
+PASS en: programming AND C# matches source intersection
+PASS en: algorithms AND C# matches source intersection
+PASS en: databases AND C# matches source intersection
+PASS en: mathematics AND C# matches source intersection
+PASS en: ai AND C# matches source intersection
+PASS en: language JavaScript matches source members
+PASS en: organization AND JavaScript matches source intersection
+PASS en: architecture AND JavaScript matches source intersection
+PASS en: operating-systems AND JavaScript matches source intersection
+PASS en: networks AND JavaScript matches source intersection
+PASS en: web AND JavaScript matches source intersection
+PASS en: security AND JavaScript matches source intersection
+PASS en: programming AND JavaScript matches source intersection
+PASS en: algorithms AND JavaScript matches source intersection
+PASS en: databases AND JavaScript matches source intersection
+PASS en: mathematics AND JavaScript matches source intersection
+PASS en: ai AND JavaScript matches source intersection
+PASS en: language SQL matches source members
+PASS en: organization AND SQL matches source intersection
+PASS en: architecture AND SQL matches source intersection
+PASS en: operating-systems AND SQL matches source intersection
+PASS en: networks AND SQL matches source intersection
+PASS en: web AND SQL matches source intersection
+PASS en: security AND SQL matches source intersection
+PASS en: programming AND SQL matches source intersection
+PASS en: algorithms AND SQL matches source intersection
+PASS en: databases AND SQL matches source intersection
+PASS en: mathematics AND SQL matches source intersection
+PASS en: ai AND SQL matches source intersection
+PASS native reset restores source members and clears URL
+PASS en: search K-002 matches source fields
+PASS en: search Computer systems matches source fields
+PASS en: empty result is visible and announced
+PASS native reset restores source members and clears URL
+PASS en: locale switch preserves filters and translated members
+PASS en: directory lists each source article once
+PASS en: directory labels, counts and members match content
+PASS en: language cross-reference counts match content
+PASS en: parent anchor works
+PASS en: binary-search detail agrees with its article
+PASS en: binary-search code, artwork, contents and translation render correctly
+PASS en: binary-search native language switch keeps the same concept
+PASS en: binary-search language link selects the right source members
+PASS en: closure-capture detail agrees with its article
+PASS en: closure-capture code, artwork, contents and translation render correctly
+PASS en: closure-capture native language switch keeps the same concept
+PASS en: closure-capture language link selects the right source members
+PASS en: dot-product-direction detail agrees with its article
+PASS en: dot-product-direction code, artwork, contents and translation render correctly
+PASS en: dot-product-direction native language switch keeps the same concept
+PASS en: dot-product-direction language link selects the right source members
+PASS en: dynamic-array-capacity detail agrees with its article
+PASS en: dynamic-array-capacity code, artwork, contents and translation render correctly
+PASS en: dynamic-array-capacity native language switch keeps the same concept
+PASS en: encoding-vs-encryption detail agrees with its article
+PASS en: encoding-vs-encryption code, artwork, contents and translation render correctly
+PASS en: encoding-vs-encryption native language switch keeps the same concept
+PASS en: encoding-vs-encryption language link selects the right source members
+PASS en: floating-point-rounding detail agrees with its article
+PASS en: floating-point-rounding code, artwork, contents and translation render correctly
+PASS en: floating-point-rounding native language switch keeps the same concept
+PASS en: floating-point-rounding language link selects the right source members
+PASS en: handles-and-resources detail agrees with its article
+PASS en: handles-and-resources code, artwork, contents and translation render correctly
+PASS en: handles-and-resources native language switch keeps the same concept
+PASS en: hard-links-and-symlinks detail agrees with its article
+PASS en: hard-links-and-symlinks code, artwork, contents and translation render correctly
+PASS en: hard-links-and-symlinks native language switch keeps the same concept
+PASS en: hardware-interrupts detail agrees with its article
+PASS en: hardware-interrupts code, artwork, contents and translation render correctly
+PASS en: hardware-interrupts native language switch keeps the same concept
+PASS en: http-vs-html detail agrees with its article
+PASS en: http-vs-html code, artwork, contents and translation render correctly
+PASS en: http-vs-html native language switch keeps the same concept
+PASS en: mb-vs-mib detail agrees with its article
+PASS en: mb-vs-mib code, artwork, contents and translation render correctly
+PASS en: mb-vs-mib native language switch keeps the same concept
+PASS en: multimodal-alignment detail agrees with its article
+PASS en: multimodal-alignment code, artwork, contents and translation render correctly
+PASS en: multimodal-alignment native language switch keeps the same concept
+PASS en: n-plus-one-queries detail agrees with its article
+PASS en: n-plus-one-queries code, artwork, contents and translation render correctly
+PASS en: n-plus-one-queries native language switch keeps the same concept
+PASS en: n-plus-one-queries language link selects the right source members
+PASS en: network-encapsulation detail agrees with its article
+PASS en: network-encapsulation code, artwork, contents and translation render correctly
+PASS en: network-encapsulation native language switch keeps the same concept
+PASS en: ordered-vs-sorted detail agrees with its article
+PASS en: ordered-vs-sorted code, artwork, contents and translation render correctly
+PASS en: ordered-vs-sorted native language switch keeps the same concept
+PASS en: ordered-vs-sorted language link selects the right source members
+PASS en: page-fault-vs-segfault detail agrees with its article
+PASS en: page-fault-vs-segfault code, artwork, contents and translation render correctly
+PASS en: page-fault-vs-segfault native language switch keeps the same concept
+PASS en: stack-lifo detail agrees with its article
+PASS en: stack-lifo code, artwork, contents and translation render correctly
+PASS en: stack-lifo native language switch keeps the same concept
+PASS en: stack-lifo language link selects the right source members
+PASS en: tcp-message-boundaries detail agrees with its article
+PASS en: tcp-message-boundaries code, artwork, contents and translation render correctly
+PASS en: tcp-message-boundaries native language switch keeps the same concept
+PASS en: threads-and-shared-memory detail agrees with its article
+PASS en: threads-and-shared-memory code, artwork, contents and translation render correctly
+PASS en: threads-and-shared-memory native language switch keeps the same concept
+PASS en: url-query-and-fragment detail agrees with its article
+PASS en: url-query-and-fragment code, artwork, contents and translation render correctly
+PASS en: url-query-and-fragment native language switch keeps the same concept
+PASS en: virtual-address-translation detail agrees with its article
+PASS en: virtual-address-translation code, artwork, contents and translation render correctly
+PASS en: virtual-address-translation native language switch keeps the same concept
+PASS en: landing search reaches matching catalog content
+PASS en: 390px page fits /en/knowledge/sets/
+PASS en: 390px page fits /en/knowledge/directory/
+PASS en: 390px directory navigation precedes its tree
+PASS en: 390px page fits /en/knowledge/binary-search/
+PASS en: 390px page fits /en/knowledge/closure-capture/
+PASS en: 390px page fits /en/knowledge/dot-product-direction/
+PASS en: 390px page fits /en/knowledge/dynamic-array-capacity/
+PASS en: 390px page fits /en/knowledge/encoding-vs-encryption/
+PASS en: 390px page fits /en/knowledge/floating-point-rounding/
+PASS en: 390px page fits /en/knowledge/handles-and-resources/
+PASS en: 390px page fits /en/knowledge/hard-links-and-symlinks/
+PASS en: 390px page fits /en/knowledge/hardware-interrupts/
+PASS en: 390px page fits /en/knowledge/http-vs-html/
+PASS en: 390px page fits /en/knowledge/mb-vs-mib/
+PASS en: 390px page fits /en/knowledge/multimodal-alignment/
+PASS en: 390px page fits /en/knowledge/n-plus-one-queries/
+PASS en: 390px page fits /en/knowledge/network-encapsulation/
+PASS en: 390px page fits /en/knowledge/ordered-vs-sorted/
+PASS en: 390px page fits /en/knowledge/page-fault-vs-segfault/
+PASS en: 390px page fits /en/knowledge/stack-lifo/
+PASS en: 390px page fits /en/knowledge/tcp-message-boundaries/
+PASS en: 390px page fits /en/knowledge/threads-and-shared-memory/
+PASS en: 390px page fits /en/knowledge/url-query-and-fragment/
+PASS en: 390px page fits /en/knowledge/virtual-address-translation/
+PASS en: 320px page fits /en/knowledge/sets/
+PASS en: 320px page fits /en/knowledge/directory/
+PASS en: 320px directory navigation precedes its tree
+PASS en: 320px page fits /en/knowledge/binary-search/
+PASS en: 320px page fits /en/knowledge/closure-capture/
+PASS en: 320px page fits /en/knowledge/dot-product-direction/
+PASS en: 320px page fits /en/knowledge/dynamic-array-capacity/
+PASS en: 320px page fits /en/knowledge/encoding-vs-encryption/
+PASS en: 320px page fits /en/knowledge/floating-point-rounding/
+PASS en: 320px page fits /en/knowledge/handles-and-resources/
+PASS en: 320px page fits /en/knowledge/hard-links-and-symlinks/
+PASS en: 320px page fits /en/knowledge/hardware-interrupts/
+PASS en: 320px page fits /en/knowledge/http-vs-html/
+PASS en: 320px page fits /en/knowledge/mb-vs-mib/
+PASS en: 320px page fits /en/knowledge/multimodal-alignment/
+PASS en: 320px page fits /en/knowledge/n-plus-one-queries/
+PASS en: 320px page fits /en/knowledge/network-encapsulation/
+PASS en: 320px page fits /en/knowledge/ordered-vs-sorted/
+PASS en: 320px page fits /en/knowledge/page-fault-vs-segfault/
+PASS en: 320px page fits /en/knowledge/stack-lifo/
+PASS en: 320px page fits /en/knowledge/tcp-message-boundaries/
+PASS en: 320px page fits /en/knowledge/threads-and-shared-memory/
+PASS en: 320px page fits /en/knowledge/url-query-and-fragment/
+PASS en: 320px page fits /en/knowledge/virtual-address-translation/
+PASS en: mobile homepage has no horizontal overflow
+PASS en: last mobile featured member is reachable
+PASS en: reduced motion disables scene animation and card transitions
+PASS en: existing gallery styles survive cleanup
+PASS en: about and header navigation still render
+PASS en: no-JavaScript catalog retains all source cards
+PASS en: no-JavaScript /en/ retains the fixed, capped source slice
+PASS en: no-JavaScript /en/ cards are visible and readable with source text
+PASS en: no-JavaScript /en/ keeps all candidates inert without extra visible cards
+PASS en: no-JavaScript /en/ native card click opens the correct source detail
+PASS en: no-JavaScript /en/knowledge/ retains the fixed, capped source slice
+PASS en: no-JavaScript /en/knowledge/ cards are visible and readable with source text
+PASS en: no-JavaScript /en/knowledge/ keeps all candidates inert without extra visible cards
+PASS en: no-JavaScript /en/knowledge/ native card click opens the correct source detail
+PASS en: /en/ receives a policy blocking inline and external scripts
+PASS en: blocked-script-policy /en/ retains the fixed, capped source slice
+PASS en: blocked-script-policy /en/ cards are visible and readable with source text
+PASS en: blocked-script-policy /en/ keeps all candidates inert without extra visible cards
+PASS en: blocked-script-policy /en/ native card click opens the correct source detail
+PASS en: /en/knowledge/ receives a policy blocking inline and external scripts
+PASS en: blocked-script-policy /en/knowledge/ retains the fixed, capped source slice
+PASS en: blocked-script-policy /en/knowledge/ cards are visible and readable with source text
+PASS en: blocked-script-policy /en/knowledge/ keeps all candidates inert without extra visible cards
+PASS en: blocked-script-policy /en/knowledge/ native card click opens the correct source detail
+PASS MB/MiB interaction still works
+PASS no browser JavaScript exceptions or console errors
+{
+  "passed": 438,
+  "base": "http://127.0.0.1:59611",
+  "output": "E:\\knowledgeos-browser-qa\\maintained-S7m1a0",
+  "errors": []
+}

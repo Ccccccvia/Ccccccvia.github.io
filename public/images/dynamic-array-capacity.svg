@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="570" viewBox="0 0 800 570" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Live elements and spare capacity in a dynamic array</title>
+  <desc id="desc">At size three and capacity four, slots contain 10, 20, 30, and one spare slot. Appending 40 fills the buffer without growth. Appending 50 copies the four existing elements into a larger buffer of capacity eight, leaving three spare slots. Doubling is an example policy, not a universal rule.</desc>
+  <defs>
+    <linearGradient id="night" x1="40" y1="40" x2="740" y2="530" gradientUnits="userSpaceOnUse"><stop stop-color="#171d32"/><stop offset=".55" stop-color="#34304e"/><stop offset="1" stop-color="#50405e"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#85acb0" stop-opacity=".16"/><stop offset="1" stop-color="#85acb0" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="38" height="38" patternUnits="userSpaceOnUse"><path d="M38 0H0V38" stroke="#c4c8cc" stroke-opacity=".045"/></pattern>
+    <pattern id="spare" width="9" height="9" patternUnits="userSpaceOnUse"><path d="m0 9 9-9" stroke="#85acb0" stroke-opacity=".13"/></pattern>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="m1 1 5 3-5 3" stroke="#85acb0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  </defs>
+  <path d="M0 0h800v570H0z" fill="url(#night)"/>
+  <path d="M36 36h728v493H36z" fill="url(#grid)"/>
+  <ellipse cx="410" cy="299" rx="318" ry="223" fill="url(#glow)"/>
+  <path d="M36 78V36h42M722 36h42v42M36 487v42h42M722 529h42v-42" stroke="#c5ab7d" stroke-opacity=".5"/>
+  <g font-family="monospace">
+    <text x="400" y="78" text-anchor="middle" fill="#d3c2a4" font-size="20" letter-spacing="2">SIZE / CAPACITY</text>
+    <rect x="226" y="99" width="14" height="14" rx="3" fill="#8e7655" fill-opacity=".25" stroke="#c5ab7d"/>
+    <text x="250" y="111" fill="#d3c2a4" font-size="13">live element</text>
+    <rect x="424" y="99" width="14" height="14" rx="3" fill="url(#spare)" stroke="#85acb0" stroke-dasharray="3 3"/>
+    <text x="448" y="111" fill="#b5d4d3" font-size="13">spare capacity</text>
+    <g fill="#bcb1c3" font-size="15"><text x="69" y="168">size 3</text><text x="69" y="192">cap  4</text><text x="69" y="282">size 4</text><text x="69" y="306">cap  4</text><text x="69" y="410">size 5</text><text x="69" y="434">cap  8</text></g>
+    <g fill="#8e7655" fill-opacity=".2" stroke="#c5ab7d" stroke-width="1.5">
+      <rect x="200" y="143" width="59" height="58" rx="8"/><rect x="267" y="143" width="59" height="58" rx="8"/><rect x="334" y="143" width="59" height="58" rx="8"/>
+      <rect x="200" y="257" width="59" height="58" rx="8"/><rect x="267" y="257" width="59" height="58" rx="8"/><rect x="334" y="257" width="59" height="58" rx="8"/>
+      <rect x="200" y="385" width="59" height="58" rx="8"/><rect x="267" y="385" width="59" height="58" rx="8"/><rect x="334" y="385" width="59" height="58" rx="8"/><rect x="401" y="385" width="59" height="58" rx="8"/>
+    </g>
+    <g fill="#628c95" fill-opacity=".25" stroke="#85acb0" stroke-width="2"><rect x="401" y="257" width="59" height="58" rx="8"/><rect x="468" y="385" width="59" height="58" rx="8"/></g>
+    <g fill="url(#spare)" stroke="#85acb0" stroke-dasharray="4 5" stroke-width="1.5"><rect x="401" y="143" width="59" height="58" rx="8"/><rect x="535" y="385" width="59" height="58" rx="8"/><rect x="602" y="385" width="59" height="58" rx="8"/><rect x="669" y="385" width="59" height="58" rx="8"/></g>
+    <g font-size="24" text-anchor="middle" fill="#e0c99f"><text x="229.5" y="181">10</text><text x="296.5" y="181">20</text><text x="363.5" y="181">30</text><text x="229.5" y="295">10</text><text x="296.5" y="295">20</text><text x="363.5" y="295">30</text><text x="229.5" y="423">10</text><text x="296.5" y="423">20</text><text x="363.5" y="423">30</text><text x="430.5" y="423">40</text></g>
+    <g font-size="24" text-anchor="middle" fill="#b5d4d3"><text x="430.5" y="295">40</text><text x="497.5" y="423">50</text></g>
+    <path d="M430 208v39" stroke="#85acb0" stroke-width="1.7" marker-end="url(#arrow)"/>
+    <text x="480" y="232" fill="#b5d4d3" font-size="14">+40 / fits</text>
+    <path d="M329 324v50" stroke="#85acb0" stroke-width="1.7" marker-end="url(#arrow)"/>
+    <text x="358" y="344" fill="#b5d4d3" font-size="14">+50 / grow, copy, append</text>
+    <text x="358" y="365" fill="#bcb1c3" font-size="12">4 to 8: example policy</text>
+    <path d="M200 453v8h327v-8" stroke="#c5ab7d" stroke-opacity=".65"/>
+    <path d="M535 453v8h193v-8" stroke="#85acb0" stroke-opacity=".65"/>
+    <g font-size="13" text-anchor="middle"><text x="363" y="481" fill="#d3c2a4">5 live elements</text><text x="631" y="481" fill="#b5d4d3">3 spare slots</text></g>
+    <text x="400" y="514" text-anchor="middle" fill="#bcb1c3" font-size="14">Spare slots are not valid elements.</text>
+  </g>
+</svg>

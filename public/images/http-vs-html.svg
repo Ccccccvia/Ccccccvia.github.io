@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 570" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">HTTP carries HTML as response content</title>
+  <desc id="desc">A browser sends a GET request to a server. The response has a status, a Content-Type header, and a body containing an HTML heading. The body is content, not the communication protocol.</desc>
+  <defs>
+    <linearGradient id="night" x1="40" y1="40" x2="740" y2="530" gradientUnits="userSpaceOnUse"><stop stop-color="#171d32"/><stop offset=".55" stop-color="#34304e"/><stop offset="1" stop-color="#50405e"/></linearGradient>
+    <pattern id="grid" width="38" height="38" patternUnits="userSpaceOnUse"><path d="M38 0H0V38" stroke="#c4c8cc" stroke-opacity=".045"/></pattern>
+  </defs>
+  <path d="M0 0h800v570H0z" fill="url(#night)"/>
+  <path d="M36 36h728v493H36z" fill="url(#grid)"/>
+  <path d="M36 78V36h42M722 36h42v42M36 487v42h42M722 529h42v-42" stroke="#c9b58f" stroke-opacity=".5"/>
+  <g font-family="monospace" text-anchor="middle">
+    <text x="400" y="87" fill="#c5ab7d" font-size="20" letter-spacing="3">PROTOCOL / CONTENT</text>
+    <rect x="90" y="125" width="165" height="76" rx="12" fill="#20283d" stroke="#85acb0" stroke-width="2"/>
+    <rect x="545" y="125" width="165" height="76" rx="12" fill="#20283d" stroke="#c5ab7d" stroke-width="2"/>
+    <text x="172" y="171" fill="#bdd8d7" font-size="23">BROWSER</text>
+    <text x="627" y="171" fill="#e0c99f" font-size="23">SERVER</text>
+    <text x="400" y="142" fill="#bcb1c3" font-size="18">GET /greeting</text>
+    <path d="M270 169h260m-12-7 12 7-12 7" stroke="#c5ab7d" stroke-width="2"/>
+    <path d="M628 215v28H172v-28m-7 12 7-12 7 12" stroke="#85acb0" stroke-width="2"/>
+    <text x="400" y="231" fill="#bdd8d7" font-size="17">HTTP RESPONSE</text>
+    <rect x="118" y="280" width="564" height="202" rx="15" fill="#1e293d" stroke="#85acb0" stroke-width="2"/>
+    <path d="M118 374h564" stroke="#85acb0" stroke-opacity=".5"/>
+    <text x="151" y="319" fill="#e0c99f" font-size="23" text-anchor="start">200 OK</text>
+    <text x="151" y="352" fill="#bcb1c3" font-size="20" text-anchor="start">Content-Type: text/html</text>
+    <rect x="144" y="396" width="393" height="61" rx="8" fill="#c5ab7d" fill-opacity=".1" stroke="#c5ab7d"/>
+    <text x="340" y="435" fill="#e0c99f" font-size="25">&lt;h1&gt;Hello&lt;/h1&gt;</text>
+    <text x="605" y="433" fill="#bdd8d7" font-size="21">BODY</text>
+    <text x="400" y="514" fill="#bcb1c3" font-size="17">HTML is inside the response.</text>
+  </g>
+</svg>

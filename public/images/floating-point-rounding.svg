@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 570" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Two adjacent binary64 values surrounding exact 0.3</title>
+  <desc id="desc">A schematic magnified number line. The stored literal 0.3 is the lower point, and 0.1 plus 0.2 is the adjacent upper point. They are separated by two to the power minus 54. Exact mathematical 0.3 lies between them, closer to the lower point.</desc>
+  <defs>
+    <linearGradient id="night" x1="40" y1="40" x2="740" y2="530" gradientUnits="userSpaceOnUse"><stop stop-color="#171d32"/><stop offset=".55" stop-color="#34304e"/><stop offset="1" stop-color="#50405e"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#bba177" stop-opacity=".19"/><stop offset="1" stop-color="#bba177" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="38" height="38" patternUnits="userSpaceOnUse"><path d="M38 0H0V38" stroke="#c4c8cc" stroke-opacity=".045"/></pattern>
+  </defs>
+  <path d="M0 0h800v570H0z" fill="url(#night)"/>
+  <path d="M36 36h728v493H36z" fill="url(#grid)"/>
+  <ellipse cx="420" cy="279" rx="278" ry="201" fill="url(#glow)"/>
+  <path d="M36 78V36h42M722 36h42v42M36 487v42h42M722 529h42v-42" stroke="#c9b58f" stroke-opacity=".5"/>
+  <path d="M190 206a238 238 0 0 1 438 0" stroke="#c9b58f" stroke-opacity=".13"/>
+  <path d="M205 216a222 222 0 0 1 408 0" stroke="#c9b58f" stroke-opacity=".13" stroke-dasharray="2 10"/>
+  <g fill="#d3c2a4" opacity=".5"><circle cx="107" cy="169" r="2"/><circle cx="697" cy="150" r="2"/><circle cx="697" cy="451" r="1.5"/></g>
+  <g font-family="monospace" text-anchor="middle">
+    <text x="142" y="87" fill="#bcb1c3" font-size="18" letter-spacing="2">binary64</text>
+    <text x="386" y="153" fill="#ddd1e1" font-size="31">0.3</text>
+    <text x="386" y="182" fill="#bcacc9" font-size="17" letter-spacing="2">EXACT</text>
+    <path d="M386 196v77" stroke="#c8b4d4" stroke-width="1.5" stroke-dasharray="4 5"/>
+    <rect x="350" y="264" width="180" height="46" rx="10" fill="#c4b18d" fill-opacity=".08"/>
+    <path d="M83 287h647m-9-6 9 6-9 6" stroke="#adbbc1" stroke-opacity=".65" stroke-width="2"/>
+    <g stroke="#99a6b6" stroke-width="2" opacity=".5"><path d="M170 273v28M710 273v28"/><circle cx="170" cy="287" r="5" fill="#8796ac"/><circle cx="710" cy="287" r="5" fill="#8796ac"/></g>
+    <circle cx="350" cy="287" r="22" stroke="#d4b982" stroke-opacity=".35"/>
+    <circle cx="350" cy="287" r="11" fill="#d4b982" stroke="#e8d7b1" stroke-width="2"/>
+    <circle cx="530" cy="287" r="22" stroke="#8ebbc0" stroke-opacity=".35"/>
+    <circle cx="530" cy="287" r="11" fill="#8ebbc0" stroke="#c3dfde" stroke-width="2"/>
+    <path d="m386 277 8 10-8 10-8-10Z" fill="#c9b6d6"/>
+    <path d="M350 325v15h180v-15" stroke="#c4c0b2" stroke-width="1.5"/>
+    <text x="440" y="375" fill="#dbd1b7" font-size="27">2⁻⁵⁴</text>
+    <path d="M335 308 220 372v25" stroke="#d4b982" stroke-width="1.5"/>
+    <path d="M545 308 620 372v25" stroke="#8ebbc0" stroke-width="1.5"/>
+    <text x="220" y="430" fill="#e1c99d" font-size="29">0.3</text>
+    <text x="620" y="430" fill="#b5d4d5" font-size="25">0.1 + 0.2</text>
+    <g fill="#ad9db5" font-size="16" letter-spacing="2"><text x="220" y="458">STORED</text><text x="620" y="458">STORED</text></g>
+    <text x="400" y="507" fill="#a89aad" font-size="16" letter-spacing="3">SCHEMATIC SCALE</text>
+  </g>
+</svg>

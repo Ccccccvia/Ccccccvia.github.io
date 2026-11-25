@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 570" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">TCP preserves byte order while read boundaries change</title>
+  <desc id="desc">Two writes group A B and C D E. The stream is A B C D E. Three possible reads group A, B C D, and E, retaining the same byte order.</desc>
+  <defs>
+    <linearGradient id="night" x1="40" y1="40" x2="740" y2="530" gradientUnits="userSpaceOnUse"><stop stop-color="#171d32"/><stop offset=".55" stop-color="#34304e"/><stop offset="1" stop-color="#50405e"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#82a9ae" stop-opacity=".18"/><stop offset="1" stop-color="#82a9ae" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="38" height="38" patternUnits="userSpaceOnUse"><path d="M38 0H0V38" stroke="#c4c8cc" stroke-opacity=".045"/></pattern>
+  </defs>
+  <path d="M0 0h800v570H0z" fill="url(#night)"/>
+  <path d="M36 36h728v493H36z" fill="url(#grid)"/>
+  <ellipse cx="400" cy="290" rx="296" ry="221" fill="url(#glow)"/>
+  <path d="M36 78V36h42M722 36h42v42M36 487v42h42M722 529h42v-42" stroke="#c9b58f" stroke-opacity=".5"/>
+  <g stroke="#a4b5b9" stroke-opacity=".14"><path d="M87 172c-27 50-27 170 0 220"/><path d="M713 172c27 50 27 170 0 220"/></g>
+  <g fill="#d3c2a4" opacity=".5"><circle cx="97" cy="95" r="2"/><circle cx="704" cy="96" r="2"/><circle cx="701" cy="481" r="1.5"/></g>
+  <g font-family="monospace">
+    <g fill="#bcb1c3" font-size="17" letter-spacing="1" text-anchor="end"><text x="120" y="166">WRITE</text><text x="120" y="308">STREAM</text><text x="120" y="454">READ</text></g>
+    <rect x="135" y="122" width="210" height="76" rx="13" fill="#8e7655" fill-opacity=".2" stroke="#c5ab7d" stroke-width="2"/>
+    <rect x="355" y="122" width="310" height="76" rx="13" fill="#628c95" fill-opacity=".17" stroke="#85acb0" stroke-width="2"/>
+    <g font-size="35" text-anchor="middle"><g fill="#e0c99f"><text x="190" y="172">A</text><text x="295" y="172">B</text></g><g fill="#b5d4d3"><text x="400" y="172">C</text><text x="505" y="172">D</text><text x="610" y="172">E</text></g></g>
+    <g stroke-width="1.5" opacity=".65"><g stroke="#c5ab7d"><path d="M190 207v38m-5-7 5 7 5-7"/><path d="M295 207v38m-5-7 5 7 5-7"/></g><g stroke="#85acb0"><path d="M400 207v38m-5-7 5 7 5-7"/><path d="M505 207v38m-5-7 5 7 5-7"/><path d="M610 207v38m-5-7 5 7 5-7"/></g></g>
+    <rect x="135" y="263" width="530" height="72" rx="12" fill="#1e293d" stroke="#a2b4b5" stroke-width="1.5"/>
+    <path d="M148 329h502" stroke="#93acac" stroke-opacity=".35"/>
+    <g font-size="35" text-anchor="middle"><g fill="#e0c99f"><text x="190" y="312">A</text><text x="295" y="312">B</text></g><g fill="#b5d4d3"><text x="400" y="312">C</text><text x="505" y="312">D</text><text x="610" y="312">E</text></g></g>
+    <path d="M683 286l16 13-16 13" stroke="#a2b4b5" stroke-width="2"/>
+    <g stroke-width="1.5" opacity=".65"><g stroke="#c5ab7d"><path d="M190 345v42m-5-7 5 7 5-7"/><path d="M295 345v42m-5-7 5 7 5-7"/></g><g stroke="#85acb0"><path d="M400 345v42m-5-7 5 7 5-7"/><path d="M505 345v42m-5-7 5 7 5-7"/><path d="M610 345v42m-5-7 5 7 5-7"/></g></g>
+    <rect x="135" y="408" width="105" height="76" rx="13" fill="#8e7655" fill-opacity=".2" stroke="#c5ab7d" stroke-width="2"/>
+    <rect x="250" y="408" width="310" height="76" rx="13" fill="#807e81" fill-opacity=".14" stroke="#b8baa8" stroke-width="2"/>
+    <rect x="570" y="408" width="95" height="76" rx="13" fill="#628c95" fill-opacity=".17" stroke="#85acb0" stroke-width="2"/>
+    <g font-size="35" text-anchor="middle"><g fill="#e0c99f"><text x="190" y="458">A</text><text x="295" y="458">B</text></g><g fill="#b5d4d3"><text x="400" y="458">C</text><text x="505" y="458">D</text><text x="610" y="458">E</text></g></g>
+  </g>
+</svg>

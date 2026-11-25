@@ -1,8 +1,11 @@
 ---
-import { getCollection } from 'astro:content';
+import { getKnowledgeEntries } from '../../knowledge-content';
+import { knowledgeCatalogPath } from '../../knowledge-paths';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import KnowledgeCard from '../../components/KnowledgeCard.astro';
+import FeaturedDeck from '../../components/FeaturedDeck.astro';
+import LibraryActions from '../../components/LibraryActions.astro';
 import { locales, type Locale } from '../../i18n/ui';
+import { featuredCardLimit } from '../../knowledge';
 import '../../styles/library.css';
 
 export function getStaticPaths() {
@@ -11,77 +14,26 @@ export function getStaticPaths() {
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const zh = locale === 'zh';
-const entries = (await getCollection('knowledge', ({ data }) => data.locale === locale)).sort((a, b) => a.data.cardId.localeCompare(b.data.cardId));
-const text = {
-  title: zh ? '让知识，成为你的卡组。' : 'A collection of understanding.',
-  description: zh ? '收集一个概念，理解一种原理。每一张卡，都是通往完整知识的入口。' : 'Collect a concept. Understand a principle. Every card opens a deeper explanation.',
-  search: zh ? '搜索标题、概念或标签…' : 'Search titles, concepts or tags…',
-  all: zh ? '浏览全部' : 'Browse all',
-  random: zh ? '随机抽卡 · 待开放' : 'Random card · coming later',
-  count: zh ? `${entries.length} 张卡牌` : `${entries.length} ${entries.length === 1 ? 'card' : 'cards'}`,
-  empty: zh ? '没有找到这张卡。试试 MB、MiB 或“容量”。' : 'No cards found. Try MB, MiB or “storage”.',
-};
+const entries = await getKnowledgeEntries(locale);
+const description = zh ? '收集一个概念，理解一种原理。每一张卡，都是通往完整知识的入口。' : 'Collect a concept. Understand a principle. Every card opens a deeper explanation.';
 ---
-<BaseLayout locale={locale} page="knowledge" description={text.description} theme="library">
+<BaseLayout locale={locale} page="knowledge" description={description} theme="library">
   <header class="library-intro">
     <div class="atlas-emblem" aria-hidden="true"><span>✧</span></div>
     <p class="small-label" lang="en">THE KNOWLEDGE ATLAS</p>
-    <h1>{text.title}</h1>
-    <p class="library-lead">{text.description}</p>
-    <form class="library-search" role="search">
-      <label for="card-search" class="sr-only">{text.search}</label>
+    <h1>{zh ? '让知识，成为你的卡组。' : 'A collection of understanding.'}</h1>
+    <p class="library-lead">{description}</p>
+    <form class="library-search" role="search" action={knowledgeCatalogPath(locale)}>
+      <label for="card-search" class="sr-only">{zh ? '搜索全部知识卡' : 'Search all knowledge cards'}</label>
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="m16 16 5 5" stroke="currentColor" stroke-width="1.5"/></svg>
-      <input id="card-search" type="search" placeholder={text.search} autocomplete="off" />
-      <button type="reset" class="clear-search">{zh ? '清除' : 'Clear'}</button>
+      <input id="card-search" name="q" type="search" placeholder={zh ? '搜索标题、概念或标签…' : 'Search titles, concepts or tags…'} />
+      <button type="submit" class="clear-search">{zh ? '搜索' : 'Search'}</button>
     </form>
-    <div class="library-actions">
-      <a href={`/${locale}/knowledge/#cards`}>{text.all}<span aria-hidden="true">↗</span></a>
-      <button type="button" disabled>{text.random}</button>
-    </div>
-    <noscript><p>{zh ? '全部卡牌列在下方；搜索需要 JavaScript。' : 'All cards are listed below. Search requires JavaScript.'}</p></noscript>
+    <LibraryActions locale={locale} />
   </header>
-  <section class="catalog" id="cards" aria-labelledby="catalog-heading">
-    <header class="catalog-toolbar">
-      <div><span class="small-label" lang="en">COLLECTION 001</span><h2 id="catalog-heading">{zh ? '数据与计量' : 'Data & measurement'}</h2></div>
-      <div class="catalog-count"><span class="preview-dot"></span><span id="card-count" role="status" data-locale={locale}>{text.count}</span><span class="preview-badge">{zh ? '内容预览' : 'CONTENT PREVIEW'}</span></div>
-    </header>
-    <div class="catalog-grid">
-      {entries.map((entry) => (
-        <article class="catalog-item" data-search={[entry.data.title, entry.data.subtitle, entry.data.summary, ...entry.data.tags].join(' ').toLowerCase()}>
-          <KnowledgeCard entry={entry} />
-          <div class="catalog-caption"><span>{entry.data.cardId} <span aria-hidden="true">/</span> {zh ? '概念卡' : 'Concept card'}</span><span>{zh ? '打开详情' : 'Open card'} <span aria-hidden="true">↗</span></span></div>
-        </article>
-      ))}
-      <aside class="collection-note">
-        <span class="note-index" lang="en">A GROWING COLLECTION</span>
-        <h3>{zh ? '从一张卡开始。' : 'Every collection starts with one card.'}</h3>
-        <p>{zh ? '这是第一张可阅读、可切换语言的知识卡。它从一份长参考手册中提炼而来，只回答一个问题：MB 和 MiB 有什么不同？' : 'The first readable, bilingual card. Distilled from a longer reference guide, it answers one question: what is the difference between MB and MiB?'}</p>
-        <div class="note-rule"></div>
-        <p class="collection-note-foot">{zh ? '一张卡 · 一个明确问题 · 一篇完整解释' : 'One card · One focused question · A full explanation'}</p>
-      </aside>
-    </div>
-    <div class="search-empty" hidden><h3>{zh ? '这一页暂时没有匹配项。' : 'Nothing here matches yet.'}</h3><p>{text.empty}</p></div>
+  <section class="featured-section" aria-labelledby="featured-heading">
+    <div class="featured-heading"><h2 id="featured-heading">{zh ? '从一张卡开始探索' : 'Begin with one idea'}</h2><span>{zh ? `精选 ${Math.min(featuredCardLimit, entries.length)} / 共 ${entries.length} 张` : `${Math.min(featuredCardLimit, entries.length)} featured / ${entries.length} cards`}</span></div>
+    <FeaturedDeck entries={entries} />
+    <p class="deck-hint">{zh ? '悬停，拾起一个概念。点击，读懂它的来龙去脉。' : 'Hover to lift a card. Open it to explore the idea.'}</p>
   </section>
 </BaseLayout>
-<script>
-  const form = document.querySelector<HTMLFormElement>('.library-search');
-  const search = document.querySelector<HTMLInputElement>('#card-search');
-  const items = [...document.querySelectorAll<HTMLElement>('.catalog-item')];
-  const counter = document.querySelector<HTMLElement>('#card-count');
-  const empty = document.querySelector<HTMLElement>('.search-empty');
-  const note = document.querySelector<HTMLElement>('.collection-note');
-  function filterCards(query: string) {
-    let count = 0;
-    for (const item of items) {
-      const match = (item.dataset.search ?? '').includes(query.trim().toLowerCase());
-      item.hidden = !match;
-      if (match) count++;
-    }
-    if (counter) counter.textContent = counter.dataset.locale === 'zh' ? `${count} 张卡牌` : `${count} ${count === 1 ? 'card' : 'cards'}`;
-    if (empty) empty.hidden = count !== 0;
-    if (note) note.hidden = count === 0;
-  }
-  form?.addEventListener('submit', (event) => event.preventDefault());
-  search?.addEventListener('input', () => filterCards(search.value));
-  form?.addEventListener('reset', () => filterCards(''));
-</script>

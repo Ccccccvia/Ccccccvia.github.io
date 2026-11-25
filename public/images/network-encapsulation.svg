@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 570" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Ethernet encloses IP, TCP, and application data</title>
+  <desc id="desc">Nested boxes show Ethernet framing around IPv4, TCP, and twelve application bytes. A lower route diagram shows a frame from A to R and a new frame from R to B, while the destination IP remains B without NAT.</desc>
+  <defs>
+    <linearGradient id="night" x1="40" y1="40" x2="740" y2="530" gradientUnits="userSpaceOnUse"><stop stop-color="#171d32"/><stop offset=".55" stop-color="#34304e"/><stop offset="1" stop-color="#50405e"/></linearGradient>
+    <pattern id="grid" width="38" height="38" patternUnits="userSpaceOnUse"><path d="M38 0H0V38" stroke="#c4c8cc" stroke-opacity=".045"/></pattern>
+  </defs>
+  <path d="M0 0h800v570H0z" fill="url(#night)"/>
+  <path d="M36 36h728v493H36z" fill="url(#grid)"/>
+  <path d="M36 78V36h42M722 36h42v42M36 487v42h42M722 529h42v-42" stroke="#c9b58f" stroke-opacity=".5"/>
+  <g font-family="monospace">
+    <text x="400" y="84" fill="#c5ab7d" font-size="20" text-anchor="middle" letter-spacing="3">ENCAPSULATION</text>
+    <rect x="83" y="114" width="634" height="251" rx="16" fill="#20283d" stroke="#c5ab7d" stroke-width="2"/>
+    <text x="105" y="146" fill="#e0c99f" font-size="19">ETHERNET HEADER</text>
+    <rect x="117" y="164" width="566" height="151" rx="12" fill="#85acb0" fill-opacity=".07" stroke="#85acb0" stroke-width="2"/>
+    <text x="138" y="195" fill="#bdd8d7" font-size="19">IPv4 HEADER</text>
+    <rect x="151" y="210" width="498" height="83" rx="9" fill="#c5ab7d" fill-opacity=".08" stroke="#c5ab7d"/>
+    <text x="172" y="242" fill="#e0c99f" font-size="18">TCP HEADER</text>
+    <rect x="320" y="224" width="310" height="52" rx="6" fill="#1e293d" stroke="#85acb0"/>
+    <text x="475" y="256" fill="#bdd8d7" font-size="21" text-anchor="middle">HELLO WORLD!</text>
+    <text x="662" y="346" fill="#e0c99f" font-size="19" text-anchor="end">FCS</text>
+    <g fill="#20283d" stroke="#85acb0" stroke-width="2"><circle cx="135" cy="447" r="30"/><circle cx="400" cy="447" r="30"/><circle cx="665" cy="447" r="30"/></g>
+    <g fill="#bdd8d7" font-size="25" text-anchor="middle"><text x="135" y="456">A</text><text x="400" y="456">R</text><text x="665" y="456">B</text></g>
+    <path d="M180 447h173m-12-7 12 7-12 7M446 447h173m-12-7 12 7-12 7" stroke="#c5ab7d" stroke-width="2"/>
+    <g text-anchor="middle" font-size="16" fill="#bcb1c3"><text x="266" y="426">FRAME TO R</text><text x="532" y="426">NEW FRAME TO B</text><text x="400" y="510">Destination IP: B on both links (no NAT)</text></g>
+  </g>
+</svg>

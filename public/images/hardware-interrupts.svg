@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="570" viewBox="0 0 800 570" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Save, handle, and resume after a hardware interrupt</title>
+  <desc id="desc">An illustrative timer request arrives at 4.0 milliseconds while thread A runs. Entry at 4.2 saves state with CPU and software cooperation. Short interrupt handling ends at 4.3, thread B runs first, and A resumes at 4.5. These times are examples, not real-time guarantees.</desc>
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="800" y2="570" gradientUnits="userSpaceOnUse"><stop stop-color="#141c30"/><stop offset=".55" stop-color="#2c2947"/><stop offset="1" stop-color="#4b3857"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" stroke="#d7d3de" stroke-opacity=".04"/></pattern>
+    <marker id="gold-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="m1 1 7 4-7 4" stroke="#c5ab7d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="teal-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="m1 1 7 4-7 4" stroke="#85acb0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  </defs>
+  <path d="M0 0h800v570H0z" fill="url(#night)"/>
+  <path d="M32 32h736v506H32z" fill="url(#grid)"/>
+  <path d="M32 76V32h44M724 32h44v44M32 494v44h44M724 538h44v-44" stroke="#c5ab7d" stroke-opacity=".35"/>
+  <g font-family="system-ui, sans-serif">
+    <text x="60" y="73" fill="#ded8e3" font-size="21" letter-spacing="2">INTERRUPT ROUND TRIP</text>
+    <text x="60" y="129" fill="#c5ab7d" font-size="15">TIMER · 4.0 ms</text>
+    <path d="M180 136h34v54" stroke="#c5ab7d" stroke-width="2" marker-end="url(#gold-arrow)"/>
+    <text x="245" y="172" fill="#d3c2a4" font-size="16">vector → entry</text>
+    <rect x="60" y="203" width="145" height="70" rx="12" fill="#85acb0" fill-opacity=".12" stroke="#85acb0" stroke-width="1.6"/>
+    <rect x="214" y="203" width="225" height="70" rx="12" fill="#c5ab7d" fill-opacity=".13" stroke="#c5ab7d" stroke-width="1.6"/>
+    <rect x="448" y="203" width="121" height="70" rx="12" fill="#b8a2bc" fill-opacity=".09" stroke="#ac9eaf" stroke-width="1.6"/>
+    <rect x="578" y="203" width="162" height="70" rx="12" fill="#85acb0" fill-opacity=".12" stroke="#85acb0" stroke-width="1.6"/>
+    <g text-anchor="middle" font-size="27"><text x="132" y="248" fill="#b7d4d5">A</text><text x="326" y="248" fill="#ead8b7">ISR</text><text x="508" y="248" fill="#d6c5da">B</text><text x="659" y="248" fill="#b7d4d5">A</text></g>
+    <g fill="#c6becd" font-family="monospace" font-size="15" text-anchor="middle"><text x="214" y="307">4.2 ms</text><text x="448" y="307">4.3 ms</text><text x="578" y="307">4.5 ms</text></g>
+    <path d="M61 329h677" stroke="#85acb0" stroke-opacity=".55" stroke-width="1.5" marker-end="url(#teal-arrow)"/>
+    <text x="738" y="354" fill="#85acb0" font-size="14" text-anchor="end">time</text>
+    <rect x="60" y="378" width="208" height="94" rx="13" fill="#192236" stroke="#c5ab7d" stroke-opacity=".65"/>
+    <rect x="295" y="378" width="208" height="94" rx="13" fill="#192236" stroke="#c5ab7d" stroke-opacity=".65"/>
+    <rect x="530" y="378" width="210" height="94" rx="13" fill="#192236" stroke="#85acb0" stroke-opacity=".65"/>
+    <g text-anchor="middle"><text x="164" y="411" fill="#c5ab7d" font-size="18">SAVE</text><text x="164" y="446" fill="#c6becd" font-size="15">CPU + entry software</text><text x="399" y="411" fill="#c5ab7d" font-size="18">HANDLE</text><text x="399" y="446" fill="#c6becd" font-size="15">Short ISR + defer</text><text x="635" y="411" fill="#85acb0" font-size="18">RESTORE</text><text x="635" y="446" fill="#c6becd" font-size="15">A may wait for B</text></g>
+    <text x="400" y="518" fill="#c6becd" font-size="16" text-anchor="middle">Illustrative times · not a real-time guarantee</text>
+  </g>
+</svg>

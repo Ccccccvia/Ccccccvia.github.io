@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="570" viewBox="0 0 800 570" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">A page fault has more than one outcome</title>
+  <desc id="desc">A memory access causes a page fault and enters OS handling. A legal, resolvable access gets a page or mapping repair and retries the instruction. An illegal access may be reported as SIGSEGV or an Access Violation. Supplying a page can use zero pages, RAM caches, copy-on-write, or disk I/O.</desc>
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="800" y2="570" gradientUnits="userSpaceOnUse"><stop stop-color="#141c30"/><stop offset=".55" stop-color="#2c2947"/><stop offset="1" stop-color="#4b3857"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" stroke="#d7d3de" stroke-opacity=".04"/></pattern>
+    <marker id="gold-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="m1 1 7 4-7 4" stroke="#c5ab7d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="teal-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="m1 1 7 4-7 4" stroke="#85acb0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  </defs>
+  <path d="M0 0h800v570H0z" fill="url(#night)"/>
+  <path d="M32 32h736v506H32z" fill="url(#grid)"/>
+  <path d="M32 76V32h44M724 32h44v44M32 494v44h44M724 538h44v-44" stroke="#c5ab7d" stroke-opacity=".35"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle">
+    <text x="400" y="73" fill="#ded8e3" font-size="21" letter-spacing="2">FAULT ≠ FATAL</text>
+    <rect x="272" y="111" width="256" height="64" rx="13" fill="#192236" stroke="#ac9eaf" stroke-width="1.5"/>
+    <text x="400" y="151" fill="#ded8e3" font-size="19">MEMORY ACCESS</text>
+    <path d="M400 176v40" stroke="#c5ab7d" stroke-width="2" marker-end="url(#gold-arrow)"/>
+    <rect x="244" y="227" width="312" height="83" rx="14" fill="#c5ab7d" fill-opacity=".08" stroke="#c5ab7d" stroke-width="1.8"/>
+    <text x="400" y="261" fill="#ead8b7" font-size="23">PAGE FAULT</text>
+    <text x="400" y="290" fill="#d3c2a4" font-size="16">OS checks region + rights</text>
+    <path d="M400 311v22H212v51" stroke="#85acb0" stroke-width="2" marker-end="url(#teal-arrow)"/>
+    <path d="M400 333h188v51" stroke="#c5ab7d" stroke-width="2" marker-end="url(#gold-arrow)"/>
+    <circle cx="400" cy="333" r="4" fill="#c5ab7d"/>
+    <rect x="118" y="347" width="188" height="26" rx="8" fill="#292b45"/>
+    <rect x="508" y="347" width="160" height="26" rx="8" fill="#382f4b"/>
+    <text x="212" y="366" fill="#b7d4d5" font-size="16">Legal + resolvable</text>
+    <text x="588" y="366" fill="#ead8b7" font-size="16">Illegal access</text>
+    <rect x="62" y="396" width="300" height="93" rx="15" fill="#85acb0" fill-opacity=".08" stroke="#85acb0" stroke-width="1.8"/>
+    <rect x="438" y="396" width="300" height="93" rx="15" fill="#c5ab7d" fill-opacity=".08" stroke="#c5ab7d" stroke-width="1.8"/>
+    <text x="212" y="433" fill="#b7d4d5" font-size="21">REPAIR + RETRY</text>
+    <text x="212" y="465" fill="#c8d6dc" font-size="16">Supply page / update mapping</text>
+    <text x="588" y="433" fill="#ead8b7" font-size="20">REPORT ACCESS ERROR</text>
+    <text x="588" y="465" fill="#d3c2a4" font-size="16">SIGSEGV / Access Violation</text>
+    <text x="212" y="520" fill="#c6becd" font-size="14">Zero · RAM cache · COW · disk</text>
+    <text x="588" y="520" fill="#c6becd" font-size="14">Unhandled: usually terminates</text>
+  </g>
+</svg>

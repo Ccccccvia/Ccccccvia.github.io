@@ -1,23 +1,304 @@
 ---
 interface Props { kind: 'sky' | 'ocean'; }
 const { kind } = Astro.props;
+const prefix = `${kind}-scene`;
+const id = (name: string) => `${prefix}-${name}`;
+const paint = (name: string) => `url(#${id(name)})`;
 ---
-<svg class="section-art" viewBox="0 0 360 112" fill="none" aria-hidden="true" focusable="false">
+<div class:list={['section-art', `section-art--${kind}`]} aria-hidden="true">
   {kind === 'sky' ? (
-    <g stroke="currentColor" stroke-width="1.5">
-      <path d="M32 88h296M70 62h90c12-19-7-37-22-28-11-29-51-24-55 2-20-5-29 17-13 26Z" />
-      <path d="M211 50h70c10-14-1-26-15-23-4-20-33-19-38 0-16-5-29 13-17 23Z" />
-      <path d="m110 88 70-16 72 16" stroke-dasharray="4 5" />
-      <circle cx="110" cy="88" r="4" fill="currentColor" />
-      <circle cx="180" cy="72" r="4" fill="currentColor" />
-      <circle cx="252" cy="88" r="4" fill="currentColor" />
-    </g>
+    <>
+      <svg class="scene-fill" viewBox="0 0 1440 700" preserveAspectRatio="none" fill="none" focusable="false">
+        <defs>
+          <linearGradient id={id('sky')} x1="720" y1="0" x2="720" y2="700" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#85dced" />
+            <stop offset=".55" stop-color="#c4f1f5" />
+            <stop offset="1" stop-color="#effbf5" />
+          </linearGradient>
+          <radialGradient id={id('sun')} cx="0" cy="0" r="1" gradientTransform="translate(1120 106) scale(250)" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#fff8d8" stop-opacity=".95" />
+            <stop offset=".28" stop-color="#fff9e5" stop-opacity=".7" />
+            <stop offset="1" stop-color="#fffbe9" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient id={id('cloud')} x1="0" y1="0" x2="0" y2="1">
+            <stop stop-color="#fffefa" />
+            <stop offset=".62" stop-color="#f5ffff" />
+            <stop offset="1" stop-color="#c5e9ed" />
+          </linearGradient>
+          <linearGradient id={id('cloud-shadow')} x1="0" y1="0" x2="0" y2="1">
+            <stop stop-color="#b8e6ec" />
+            <stop offset="1" stop-color="#91d3df" stop-opacity=".4" />
+          </linearGradient>
+          <linearGradient id={id('mist')} x1="720" y1="480" x2="720" y2="700" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#e6ffff" stop-opacity="0" />
+            <stop offset="1" stop-color="#eafff8" stop-opacity=".95" />
+          </linearGradient>
+        </defs>
+        <path fill={paint('sky')} d="M0 0h1440v700H0z" />
+      </svg>
+      <svg class="sky-sun" viewBox="850 -170 540 540" fill="none" focusable="false">
+        <circle cx="1120" cy="106" r="250" fill={paint('sun')} />
+        <circle cx="1120" cy="106" r="44" fill="#fff9dd" opacity=".85" />
+        <circle cx="1120" cy="106" r="61" stroke="#fffceb" stroke-opacity=".38" />
+      </svg>
+      <svg class="sky-cloud-distant-left" viewBox="-115 85 440 200" fill="none" focusable="false">
+        <g class="scene-back"><g class="cloud-drift cloud-drift--slow" opacity=".65">
+          <path d="M-90 267h352c26 0 40-16 40-31s-13-29-31-29h-19c-5-27-26-42-53-40-8-36-39-55-70-43-18-32-59-37-84-11-28-9-52 5-57 32h-78Z" fill="#eafcff" />
+        </g></g>
+      </svg>
+      <svg class="sky-cloud-distant-right" viewBox="1140 170 410 205" fill="none" focusable="false">
+        <g class="scene-back"><g class="cloud-drift cloud-drift--slow" opacity=".65">
+          <path d="M1190 362h322v-110h-54c-12-28-38-39-64-26-9-39-56-51-84-22-29-9-54 9-57 35h-23c-31 0-48 24-40 45h-24c-35 0-43 48 24 48Z" fill="#e4faff" />
+        </g></g>
+      </svg>
+      <svg class="sky-island-left" viewBox="55 275 255 190" fill="none" focusable="false">
+        <g class="scene-back" opacity=".78">
+          <ellipse cx="183" cy="438" rx="113" ry="13" fill="#94d7df" opacity=".25" />
+          <path d="m88 368 92-25 99 26-95 33Z" fill="#effdf5" />
+          <path d="m88 368 96 34 95-33-28 41-63 24-61-27Z" fill="#a2d9dc" />
+          <path d="m184 402 95-33-28 41-63 24Z" fill="#78bccb" />
+          <path d="m127 365 54-18 58 17-55 20Z" fill="#c1e8e6" />
+          <path d="M139 321v43l44 15v-44Z" fill="#f8fff8" />
+          <path d="m183 335 44-14v43l-44 15Z" fill="#b9dee0" />
+          <path d="m128 321 55-30 55 30-55 19Z" fill="#fafff7" />
+          <path d="m128 321 55 19 55-19v7l-55 19-55-19Z" fill="#9ccbd2" />
+          <path d="M149 337v26m13-22v27m35-22v22m14-27v22" stroke="#81b9c6" stroke-width="5" />
+          <path d="m147 382 37 13 40-14m-67 11 27 10 30-11" stroke="#f1fff8" stroke-width="3" />
+          <path d="M109 355v-24m-7 10 7-14 7 14Z" stroke="#8abfc4" stroke-width="3" fill="#a7d9cd" stroke-linejoin="round" />
+        </g>
+      </svg>
+      <svg class="sky-island-right" viewBox="1200 375 180 140" fill="none" focusable="false">
+        <g class="scene-back" opacity=".45">
+          <path d="m1214 455 62-17 88 20-75 22Z" fill="#f1fffa" />
+          <path d="m1214 455 75 25 75-22-37 32-43 7-43-17Z" fill="#88cbd4" />
+          <path d="m1260 444 17-55 17 57-17 6Z" fill="#c5e9e5" />
+          <path d="m1277 389 17 57-17 6Z" fill="#93cdd3" />
+        </g>
+      </svg>
+      <svg class="sky-cloud-left" viewBox="-115 -40 510 300" fill="none" focusable="false">
+        <g class="scene-front"><g class="cloud-drift">
+          <path d="M-100 47h98c10-44 57-65 93-38 23-22 66-19 85 13 43-5 77 24 76 62h19c37 0 59 27 59 59 32 0 55 23 55 51 0 29-23 48-58 48H-100Z" fill={paint('cloud-shadow')} />
+          <path d="M-100 17H-4C8-20 57-33 88-7c31-20 70-3 80 28h14c37 0 61 25 61 62h22c30 0 52 24 52 52h14c27 0 46 19 46 44s-21 41-51 41H-100Z" fill={paint('cloud')} />
+          <path d="M-40 166h188c25 0 41-15 41-36v-9h49M-10 200h271c19 0 33-9 39-21" stroke="#fff" stroke-opacity=".7" stroke-width="3" stroke-linecap="round" />
+          <path d="M-60 82H58c27 0 44 17 44 39H-60Z" fill="#fff" opacity=".65" />
+        </g></g>
+      </svg>
+      <svg class="sky-cloud-right" viewBox="1115 85 425 245" fill="none" focusable="false">
+        <g class="scene-front"><g class="cloud-drift cloud-drift--reverse">
+          <path d="M1510 155h-91c-11-40-62-55-91-26-30-16-62 2-67 33h-13c-34 0-54 22-54 51-36 0-55 23-55 49 0 30 22 47 56 47h315Z" fill={paint('cloud-shadow')} />
+          <path d="M1510 129h-90c-14-38-61-49-89-22-27-15-63 2-67 32h-17c-31 0-52 24-52 51h-14c-28 0-47 21-47 45 0 27 23 44 53 44h323Z" fill={paint('cloud')} />
+          <path d="M1246 176h37c0 24 17 41 43 41h172m-319 38h250" stroke="#fff" stroke-opacity=".7" stroke-width="3" stroke-linecap="round" />
+        </g></g>
+      </svg>
+      <svg class="sky-horizon" viewBox="0 480 1440 250" preserveAspectRatio="none" fill="none" focusable="false">
+        <path d="M-60 637 60 612 122 618 212 586 305 612 380 603 450 632 553 618 659 643 751 630 837 638 945 604 1030 622 1115 593 1202 609 1309 582 1490 621V730H-60Z" fill="#a6dde3" opacity=".42" />
+        <path d="M-60 657c190-35 295-12 453-8s250-16 408-2 282-21 387-16 220 10 312-8v107H-60Z" fill="#c0e9e8" />
+        <path d="M0 480h1440v250H0Z" fill={paint('mist')} />
+        <path d="M0 655c265-15 425-9 720-2s498-14 720-7" stroke="#f7fffb" stroke-width="2" opacity=".7" />
+      </svg>
+      <svg class="sky-cloud-bottom-left" viewBox="-110 480 590 270" fill="none" focusable="false">
+        <g class="scene-front"><g class="cloud-drift cloud-drift--slow">
+          <path d="M-90 745V575h48c8-37 38-57 71-49 20-46 76-49 103-10 41-10 75 19 73 57h35c33 0 54 23 54 51h28c37 0 60 28 60 58h70v63Z" fill={paint('cloud')} />
+          <path d="M-30 619h164c23 0 39-15 39-34m-31 81h103c22 0 37-12 39-29" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".8" />
+        </g></g>
+      </svg>
+      <svg class="sky-cloud-bottom-right" viewBox="1080 520 450 250" fill="none" focusable="false">
+        <g class="scene-front"><g class="cloud-drift cloud-drift--slow">
+          <path d="M1103 746v-65h54c-1-32 23-57 56-57h17c2-40 35-64 73-55 21-46 82-47 108-4h99v181Z" fill={paint('cloud')} />
+          <path d="M1185 675h122c23 0 38-14 38-36h148" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".8" />
+        </g></g>
+      </svg>
+    </>
   ) : (
-    <g stroke="currentColor" stroke-width="1.5">
-      <path d="M32 32q37-22 74 0t74 0t74 0t74 0M32 51q37-22 74 0t74 0t74 0t74 0" />
-      <path d="m154 70-17 12 17 12m52-24 17 12-17 12m-19-28-16 33" stroke-linecap="round" stroke-linejoin="round" />
-      <circle cx="74" cy="85" r="5" /><circle cx="95" cy="69" r="3" />
-      <circle cx="276" cy="88" r="7" /><circle cx="290" cy="66" r="3" />
-    </g>
+    <>
+      <svg class="scene-fill" viewBox="0 0 1440 700" preserveAspectRatio="none" fill="none" focusable="false">
+        <defs>
+          <linearGradient id={id('water')} x1="720" y1="0" x2="720" y2="700" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#53cbd0" />
+            <stop offset=".2" stop-color="#178b98" />
+            <stop offset=".44" stop-color="#0c626f" />
+            <stop offset="1" stop-color="#062f40" />
+          </linearGradient>
+          <linearGradient id={id('depth')} x1="0" y1="350" x2="1440" y2="350" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#073e50" stop-opacity=".48" />
+            <stop offset=".58" stop-color="#073e50" stop-opacity=".2" />
+            <stop offset="1" stop-color="#073e50" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id={id('shaft')} x1="1000" y1="70" x2="1160" y2="590" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#bdfff1" stop-opacity=".26" />
+            <stop offset=".7" stop-color="#80e8df" stop-opacity=".04" />
+            <stop offset="1" stop-color="#80e8df" stop-opacity="0" />
+          </linearGradient>
+          <radialGradient id={id('glow')} cx="0" cy="0" r="1" gradientTransform="translate(1220 120) rotate(90) scale(470 550)" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#73ecdd" stop-opacity=".2" />
+            <stop offset="1" stop-color="#73ecdd" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        <path d="M0 0h1440v700H0Z" fill={paint('water')} />
+        <path d="M0 0h1440v700H0Z" fill={paint('glow')} />
+        <path d="M0 0h1440v700H0Z" fill={paint('depth')} />
+      </svg>
+      <svg class="ocean-waves" viewBox="0 0 1440 180" preserveAspectRatio="none" fill="none" focusable="false">
+        <g class="scene-back">
+          <g class="wave-drift">
+            <path d="M-100-40h1640V49c-168-34-280 26-458 9S803 28 654 48 378 68 230 44 21 48-100 61Z" fill="#aff0e9" />
+            <path d="M-100 53c180-38 291 17 458 15S601 33 778 58s247 29 407 3 265-5 355 3v38c-148-19-219 8-356 20s-297-27-429-12-250 29-395 7S82 96-100 116Z" fill="#69d2d3" opacity=".8" />
+            <path d="M-100 58c180-38 291 17 458 15S601 38 778 63s247 29 407 3 265-5 355 3" stroke="#d3fff3" stroke-opacity=".66" stroke-width="2" />
+          </g>
+          <g class="wave-drift wave-drift--slow">
+            <path d="M-100 114c165-24 268 25 422 12s250-25 392-6 235 24 398 1 288-13 428 4v35c-163-24-273 5-427 10s-268-22-402-8-260 17-394 0S48 143-100 166Z" fill="#37afb9" opacity=".65" />
+            <path d="M-100 118c165-24 268 25 422 12s250-25 392-6 235 24 398 1 288-13 428 4" stroke="#9ce9e2" stroke-opacity=".42" stroke-width="2" />
+            <path d="M992 89c52 6 79 6 119 0m81-6 92-4M78 91c45-1 82 6 126 7" stroke="#e1fff4" stroke-opacity=".46" stroke-width="3" stroke-linecap="round" />
+          </g>
+        </g>
+      </svg>
+      <svg class="ocean-light" viewBox="850 50 700 640" fill="none" focusable="false">
+        <g class="scene-back"><g class="light-breathe" fill={paint('shaft')}>
+          <path d="m905 76 50 1 194 556-277-13Z" />
+          <path d="m1054 89 23-1 265 559-173 5Z" />
+          <path d="m1216 80 59-5 257 457-161 81Z" />
+          <path d="m1355 77 19-1 149 211-18 213Z" />
+        </g></g>
+      </svg>
+      <svg class="ocean-ridge-right" viewBox="870 430 650 300" fill="none" focusable="false">
+        <g class="scene-back" opacity=".36">
+          <path d="m903 700 73-132 54 7 60-106 57 40 48-63 76 62 52-25 99 71 68-29v175Z" fill="#0c5662" />
+          <path d="m1030 575 60-106 15 135 90-158 25 191 103-154 21 217h-441Z" fill="#0a4353" />
+        </g>
+      </svg>
+      <svg class="ocean-ridge-left" viewBox="-60 540 410 190" fill="none" focusable="false">
+        <g class="scene-back" opacity=".36">
+          <path d="M-40 700V609l98-44 78 36 84-13 106 112Z" fill="#0a4859" />
+        </g>
+      </svg>
+      <svg class="ocean-particles" viewBox="0 0 1440 700" fill="none" focusable="false">
+        <g class="scene-front">
+          <g class="light-breathe" fill="#b4f4e9">
+            <circle cx="1087" cy="240" r="2" opacity=".42" />
+            <circle cx="1250" cy="319" r="3" opacity=".32" />
+            <circle cx="1182" cy="448" r="1.5" opacity=".5" />
+            <circle cx="1370" cy="391" r="2" opacity=".35" />
+            <circle cx="985" cy="495" r="1.5" opacity=".3" />
+            <circle cx="1320" cy="205" r="1.5" opacity=".5" />
+            <circle cx="1138" cy="360" r="1" opacity=".45" />
+            <circle cx="1410" cy="524" r="2" opacity=".4" />
+            <circle cx="72" cy="320" r="1.5" opacity=".2" />
+            <circle cx="140" cy="459" r="1" opacity=".3" />
+            <circle cx="267" cy="583" r="1.5" opacity=".2" />
+          </g>
+          <g stroke="#9ce9df" stroke-opacity=".24">
+            <circle cx="1302" cy="373" r="5" />
+            <circle cx="1334" cy="295" r="3" />
+            <circle cx="1217" cy="517" r="4" />
+          </g>
+        </g>
+      </svg>
+      <svg class="ocean-reef-right" viewBox="1080 450 450 310" fill="none" focusable="false">
+        <g class="scene-front">
+          <path d="m1108 740 63-83 57 6 64-84 90 24 53-48 75 25v160Z" fill="#083849" />
+          <path d="m1228 663 64-84 34 105 56-81 25 137h-299Z" fill="#0a4350" />
+          <path d="m1292 579 90 24-56 81Z" fill="#175862" opacity=".6" />
+          <path d="M1364 653c-17-59-11-117 11-167-6 62-7 107 7 151 4-70 29-107 61-130-28 41-43 93-47 151Z" fill="#17636a" />
+          <path d="M1432 671c-6-42 0-89 23-123m-87 98c-15-31-34-49-56-59" stroke="#327b7d" stroke-opacity=".55" stroke-width="4" stroke-linecap="round" />
+        </g>
+      </svg>
+      <svg class="ocean-reef-left" viewBox="-50 620 290 140" fill="none" focusable="false">
+        <g class="scene-front">
+          <path d="M-40 742V659l76-21 65 34 58-9 61 79Z" fill="#062f40" />
+        </g>
+      </svg>
+      <svg class="ocean-floor" viewBox="0 675 1440 65" preserveAspectRatio="none" fill="none" focusable="false">
+        <path d="M-40 691c217-15 396 23 617 12s398 14 568-3 251-4 365-1v41H-40Z" fill="#052c3c" />
+      </svg>
+    </>
   )}
-</svg>
+</div>
+
+<style>
+  .section-art {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .section-art > svg {
+    position: absolute;
+    display: block;
+    height: auto;
+    overflow: visible;
+  }
+
+  .section-art > .scene-fill,
+  .section-art > .ocean-particles {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .sky-sun { top: clamp(-150px, -8vw, -60px); right: clamp(0px, 6vw, 180px); width: clamp(220px, 32vw, 480px); }
+  .sky-cloud-distant-left { top: 110px; left: -35px; width: clamp(180px, 25vw, 400px); }
+  .sky-cloud-distant-right { top: 160px; right: -45px; width: clamp(160px, 23vw, 370px); }
+  .sky-island-left { top: clamp(170px, 14vw, 230px); left: clamp(20px, 6vw, 160px); width: clamp(100px, 15vw, 235px); }
+  .sky-island-right { top: 230px; right: clamp(20px, 7vw, 180px); width: clamp(90px, 12vw, 180px); }
+  .sky-cloud-left { top: -12px; left: -32px; width: clamp(180px, 28vw, 450px); }
+  .sky-cloud-right { top: 35px; right: -45px; width: clamp(160px, 24vw, 380px); }
+  .section-art > .sky-horizon { bottom: 0; width: 100%; height: 180px; }
+  .sky-cloud-bottom-left { bottom: -15px; left: -20px; width: clamp(200px, 30vw, 540px); }
+  .sky-cloud-bottom-right { bottom: -15px; right: -20px; width: clamp(160px, 25vw, 430px); }
+
+  .section-art > .ocean-waves { top: 0; width: 100%; height: clamp(100px, 12vw, 160px); }
+  .ocean-light { top: 35px; right: 0; width: clamp(240px, 48vw, 760px); }
+  .ocean-ridge-right { bottom: -10px; right: -20px; width: clamp(220px, 45vw, 640px); }
+  .ocean-ridge-left { bottom: -10px; left: -10px; width: clamp(140px, 24vw, 360px); }
+  .ocean-reef-right { bottom: -10px; right: 0; width: clamp(190px, 32vw, 460px); }
+  .ocean-reef-left { bottom: -10px; left: -10px; width: clamp(100px, 20vw, 300px); }
+  .section-art > .ocean-floor { bottom: 0; width: 100%; height: 45px; }
+
+  .scene-back {
+    transform: translate(calc(var(--scene-x, 0px) * .25), calc(var(--scene-y, 0px) * .25));
+  }
+
+  .scene-front {
+    transform: translate(calc(var(--scene-x, 0px) * .55), calc(var(--scene-y, 0px) * .55));
+  }
+
+  .cloud-drift { animation: cloud-drift 24s ease-in-out infinite alternate; }
+  .cloud-drift--slow { animation-duration: 32s; animation-delay: -11s; }
+  .cloud-drift--reverse { animation-direction: alternate-reverse; animation-delay: -8s; }
+  .wave-drift { animation: wave-drift 18s ease-in-out infinite alternate; }
+  .wave-drift--slow { animation-duration: 25s; animation-direction: alternate-reverse; animation-delay: -9s; }
+  .light-breathe { animation: light-breathe 16s ease-in-out infinite alternate; }
+
+  @keyframes cloud-drift {
+    from { transform: translate(-7px, 2px); }
+    to { transform: translate(7px, -4px); }
+  }
+
+  @keyframes wave-drift {
+    from { transform: translate(-12px, 0); }
+    to { transform: translate(12px, 3px); }
+  }
+
+  @keyframes light-breathe {
+    from { opacity: .65; }
+    to { opacity: 1; }
+  }
+
+  @media (max-width: 760px) {
+    .sky-sun { top: -70px; right: 0; width: 220px; }
+    .sky-cloud-left { top: -25px; width: 180px; }
+    .sky-cloud-right { top: 12px; width: 160px; }
+    .sky-cloud-distant-left { top: 65px; width: 160px; }
+    .sky-cloud-distant-right { top: 65px; width: 145px; }
+    .sky-island-left { top: 76px; left: 16px; width: clamp(80px, 13vw, 100px); }
+    .sky-island-right { top: 92px; right: 18px; width: clamp(68px, 11vw, 84px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scene-back, .scene-front { transform: none; }
+    .cloud-drift, .wave-drift, .light-breathe { animation: none; }
+  }
+</style>

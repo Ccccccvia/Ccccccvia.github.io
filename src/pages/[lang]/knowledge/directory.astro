@@ -1,0 +1,48 @@
+---
+import { getKnowledgeEntries } from '../../../knowledge-content';
+import { knowledgeEntryPath, knowledgeCatalogPath } from '../../../knowledge-paths';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import LibraryActions from '../../../components/LibraryActions.astro';
+import { locales, pagePath, type Locale } from '../../../i18n/ui';
+import { topicGroups, topicIds, topics, programmingLanguages } from '../../../knowledge';
+import '../../../styles/library.css';
+
+export function getStaticPaths() {
+  return locales.map((locale) => ({ params: { lang: locale }, props: { locale } }));
+}
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const zh = locale === 'zh';
+const entries = await getKnowledgeEntries(locale);
+const title = zh ? '知识目录' : 'Knowledge directory';
+---
+<BaseLayout locale={locale} page="knowledge" title={title} description={zh ? '沿着计算机系统、网络、编程与数学的层级，找到相关知识卡。' : 'Find related cards through computer systems, networks, programming and mathematics.'} theme="library">
+  <nav class="breadcrumbs" aria-label={zh ? '面包屑导航' : 'Breadcrumb'}><a href={pagePath(locale, 'knowledge')}>{zh ? '知识库' : 'Knowledge'}</a><span aria-hidden="true">/</span><span aria-current="page">{title}</span></nav>
+  <header class="collection-intro"><div><p class="small-label" lang="en">A MAP OF IDEAS</p><h1>{title}</h1></div><LibraryActions locale={locale} /></header>
+  <p class="directory-lead">{zh ? '学科大类 → 知识模块 → 卡片。这里的模块与卡面、筛选菜单使用相同名称。' : 'Subject group → topic → card. Topic names match the cards and filter menu.'}</p>
+  <div class="directory-layout">
+    <nav class="directory-nav" aria-label={zh ? '目录分区' : 'Directory sections'}>
+      <span class="directory-nav-label">{zh ? '学科目录' : 'Subjects'}</span>
+      {topicGroups.map((group) => <a href={`#${group.id}`}>{group[locale]}</a>)}
+      <span class="directory-nav-label">{zh ? '其他浏览方式' : 'Other ways to browse'}</span>
+      <a href="#programming-languages">{zh ? '按编程语言' : 'By programming language'}</a>
+      <a href="#practice">{zh ? '实操与作品' : 'Practice & projects'}</a>
+    </nav>
+    <div class="directory-tree">
+      {topicGroups.map((group, index) => (
+        <section id={group.id} class="directory-group" aria-labelledby={`${group.id}-title`}>
+          <h2 id={`${group.id}-title`}><span aria-hidden="true">0{index + 1}</span>{group[locale]}</h2>
+          {topicIds.filter((id) => topics[id].group === group.id).map((id) => {
+            const cards = entries.filter((entry) => entry.data.topic === id);
+            return <details class="topic-branch" data-topic={id} open={cards.length > 0}>
+              <summary><span>{topics[id][locale]}</span><span class="topic-count">{zh ? `${cards.length} 张卡` : `${cards.length} ${cards.length === 1 ? 'card' : 'cards'}`}</span></summary>
+              {cards.length ? <div class="topic-content"><ul>{cards.map((entry) => <li><a href={knowledgeEntryPath(locale, entry.data.key)}><span>{entry.data.cardId}</span>{entry.data.title}</a></li>)}</ul><a class="topic-set-link" href={knowledgeCatalogPath(locale, { topic: id })}>{zh ? '查看此模块的卡片' : 'View cards in this topic'} <span aria-hidden="true">↗</span></a></div> : <p class="topic-empty">{zh ? '这个模块暂时没有卡片。' : 'No cards in this topic yet.'}</p>}
+            </details>;
+          })}
+        </section>
+      ))}
+      <section id="programming-languages" class="directory-group" aria-labelledby="languages-heading"><h2 id="languages-heading">{zh ? '按编程语言' : 'By programming language'}</h2><p class="directory-note">{zh ? '按卡片涉及的编程语言交叉筛选，不改变上面的学科归属。' : 'Filter by the programming languages covered; cards keep their subject above.'}</p><div class="language-topics">{programmingLanguages.map((language) => <a href={knowledgeCatalogPath(locale, { language })}><span>{language}</span><span>{entries.filter((entry) => entry.data.languages.includes(language)).length}</span></a>)}</div></section>
+      <section id="practice" class="directory-group" aria-labelledby="practice-heading"><h2 id="practice-heading">{zh ? '海下 · 实操与作品' : 'Below the surface · Practice'}</h2><p class="directory-note">{zh ? '实作画廊目前还没有发布作品。' : 'No projects have been published in the gallery yet.'}</p><a class="topic-set-link" href={pagePath(locale, 'projects')}>{zh ? '进入实作画廊' : 'Explore the gallery'} <span aria-hidden="true">↗</span></a></section>
+    </div>
+  </div>
+</BaseLayout>
